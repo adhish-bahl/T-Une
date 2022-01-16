@@ -33,7 +33,7 @@
 
 .logo {
     width: 100px;
-    margin-top: 50px;
+    margin: 50px 0px;
 }
 
 form > label, form > input {
@@ -47,6 +47,7 @@ input {
     border: 0px;
     background-color: transparent;
     border-bottom: 2px solid black;
+    border-right    : 2px solid black;
     border-radius: 10px;
     box-shadow: 10px 10px 31px -5px rgba(0,0,0,0.75);
     padding: 10px;
@@ -67,4 +68,17 @@ input {
     background-color: #121212;
     color: white;
     transform: scale(1.04);
+    cursor:pointer;
+}
+
+.terms {
+    width: 230px;
+    font-size: smaller;
+    margin-top: 30px;
+    text-align: justify;
+}
+
+.newAccount:hover {
+    color: white;
+    text-decoration: none;
 }

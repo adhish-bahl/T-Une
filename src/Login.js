@@ -17,6 +17,13 @@ function Login() {
                     <i class="bi bi-eye-slash" id="togglePassword"></i>
                     <button type="submit" id='loginButton'>Log-in</button>
                 </form>
+                <p className="terms">By continuing, you agree to T-Une's Conditions of Use and Privacy Notice.</p>
+                {/* <p className="terms"><hr /></p> */}
+                  <Link>
+                  <p className="newAccount">
+                    Create new Account
+                  </p>
+                  </Link>
             </div>
         </div>
     )
