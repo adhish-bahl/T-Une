@@ -14,9 +14,9 @@ function Header() {
         </div>
         <div className="right">
           <ul>
-			  <li><img src={home} alt="HomeIcon" /></li>
-			  <li><img src={explore} alt="ExploreIcon" /></li>
-			  <li><img src={account} alt="AccountIcon" /></li>
+			  <li><img className='icon' src={home} alt="HomeIcon" /></li>
+			  <li><img className='icon' src={explore} alt="ExploreIcon" /></li>
+			  <li><img className='icon' src={account} alt="AccountIcon" /></li>
 		  </ul>
 		  <p className="welcomeMessage">Hello, Guest</p>
         </div>

@@ -1,9 +1,10 @@
 *{
-    color: #e7e55c;
+    /* color: #e7e55c; */
     outline: none;
 }
 
 .container {
+    color: #e7e55c;
     display: flex;
     justify-content: center;
     align-items: flex-start;
