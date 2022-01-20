@@ -13,7 +13,8 @@ function App() {
                 </Route>
 
                 <Route path="/">
-                    <h1>This is react App</h1>
+                    <Header />
+                    {/* <h1>This is react App</h1> */}
                 </Route>
             </Switch>
         </div>

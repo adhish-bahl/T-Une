@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import logo from "./images/tune.jpg";
-import "./login.css";
+import "./Login.css";
 import showPassword from "./images/show-password.svg";
 import hidePassword from "./images/hide-password.svg";
 
@@ -11,15 +11,8 @@ function Login() {
     const [pwd, setPwd] = useState();
     const [isRevealPwd, setIsRevealPwd] = useState(false);
 
-
-    // login(e) {
-    //     alert("Hello");
-    //     e.prevDefault();
-    // }
-
     const login = e =>{
-        pwd = 
-        window.alert(email + pwd);
+        console.log(email + pwd);
         e.prevDefault();
     }
 
@@ -27,7 +20,7 @@ function Login() {
         <div className='container'>
             <div className="innerBox">
                 <img src={logo} alt="logo" className='logo'/>
-                <h1>Login</h1>
+                <h1>Login</h1>  
                 <form action="" onSubmit={login}>
                     <label htmlFor="email" id='emailL'>E-mail</label>
                     <input type="email" name="email" id="email" onChange={e => setEmail(e.target.value)} value={email} />
