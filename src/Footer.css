@@ -1,0 +1,10 @@
+.footer {
+    background-color: rgba(0, 0, 0, 0.445);
+    Padding: 15px;
+    float: inline-end;
+}
+
+.mainText {
+    margin: 15px 25vw;
+    /* background-color: blue; */
+}
