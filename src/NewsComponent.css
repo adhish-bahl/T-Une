@@ -5,6 +5,8 @@
     margin: 30px;
     border-radius: 20px;
     box-sizing: border-box;
+    background-color: rgba(244, 196, 74, 0.452);
+    box-shadow: 10px 10px 30px -7px rgba(0,0,0,0.75);
 }
 
 .newsUpper {
@@ -51,5 +53,24 @@
 }
 
 .likeIcon {
-    height: 15px;
+    /* height: 15px; */
+}
+
+.share>img {
+    padding: 0px 20px
+}
+
+.likeCounter {
+    height: 100%;
+    padding-left: 5px;
+    font-size: 1.2rem;
+}
+
+span {
+    padding: 0%;
+    margin: 0%;
+    height: 100%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
 }

@@ -7,6 +7,7 @@ import "./Header.css";
 
 function Header() {
   return (
+    <div className="backest">
     <div className='header'>
         <div className="left">
           <img className='logoImg' src={logo} alt="Logo" />
@@ -20,6 +21,7 @@ function Header() {
 		  </ul>
 		  <p className="welcomeMessage">Hello, Guest</p>
         </div>
+    </div>
     </div>
   )
 }

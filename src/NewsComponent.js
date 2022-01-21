@@ -22,7 +22,7 @@ function NewsComponent() {
             <span className="likeButton" className="likeIcon"><img src={like} alt="like" /></span>
             <span className="likeCounter">10</span>
             <span className="share">
-                <img src={share} alt="shareIcon" className='shareIcon' />
+                <img src={share} alt="shareIcon" />
             </span>
         </div>
     </div>)
