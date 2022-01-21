@@ -1,9 +1,13 @@
 import React from 'react';
+import NewsComponent from './NewsComponent';
+import "./HomePage.css"
 
 function HomePage() {
   return(
-    <div>
-
+    <div className='homeContainer'>
+        <NewsComponent />
+        <NewsComponent />
+        <NewsComponent />
     </div>)
 }
 

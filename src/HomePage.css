@@ -1,0 +1,20 @@
+.homeContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: url('./images/HomeBackground.png') no-repeat center center/cover;
+    background-attachment: fixed;
+}
+
+/* .homeContainer::before {
+    content: "";
+    background: url('./images/HomeBackground.png') no-repeat center center/cover;
+    opacity: 0.89;
+    z-index: -51;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background-attachment: fixed;
+} */
