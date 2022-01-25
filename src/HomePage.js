@@ -8,6 +8,10 @@ function HomePage() {
         <NewsComponent />
         <NewsComponent />
         <NewsComponent />
+        <NewsComponent />
+        <NewsComponent />
+        <NewsComponent />
+        <NewsComponent />
     </div>)
 }
 
