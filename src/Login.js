@@ -2,14 +2,22 @@ import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import logo from "./images/tune.jpg";
 import "./Login.css";
+import "./Signin.css"
 import showPassword from "./images/show-password.svg";
 import hidePassword from "./images/hide-password.svg";
-import SignIn from "./Signin";
 
 function Login() {
 
+    const [name, setName] = useState();
+    const [email1, setEmail1] = useState();
+    const [pwd1, setPwd1] = useState();
+    const [pwd2, setPwd2] = useState();
+    const [dob, setDob] = useState();
+    const [number, setNumber] = useState();
+
     const [email, setEmail] = useState();
     const [pwd, setPwd] = useState();
+
     const [modal, setModal] = useState(false);
     const [isRevealPwd, setIsRevealPwd] = useState(false);
 
@@ -21,6 +29,34 @@ function Login() {
     const toggleModal = () => {
         setModal(!modal);
     };
+
+    const Signin = () => {
+          return (
+            <div className='modal'>
+                <div className="overlay">
+                    <div className="modalContent">
+                          <h1 className="signin">Sign-In</h1>
+                        <button className="closeModal" onClick={toggleModal}>X</button>
+                          <div className="form">
+                              <form >
+                            <label htmlFor='nameInput' className="nameLabel">Name</label>
+                            <input type="text" name="nameLabel" id="nameInput" onChange={e => setName(e.target.value)} value={name} />
+                            <label htmlFor='emailInput' className="emailLabel">E-mail id</label>
+                            <input type="email" name="emailLabel" id="emailInput" onChange={e => setEmail1(e.target.value)} value={email1} />
+                            <label htmlFor='password1Input' className="password1Label">Password</label>
+                            <input type="password" name="password1Label" id="password1Input" onChange={e => setPwd1(e.target.value)} value={pwd1} />
+                            <label htmlFor='password2Input' className="password2Label">Re-enter your password</label>
+                            <input type="password" name="password2Label" id="password2Input" onChange={e => setPwd2(e.target.value)} value={pwd2} />
+                            <label htmlFor='dobInput' className="dobLabel">Date of Birth</label>
+                            <input type="date" name="dobLabel" id="dobInput" onChange={e => setDob(e.target.value)} value={dob} />
+                            <label htmlFor='numberInput' className="numberLabel">Phone Number</label>
+                            <input type="tel" name="numberLabel" id="numberInput" onChange={e => setNumber(e.target.value)} value={number} />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>)
+    }
 
     return (
         <div className='container'>
@@ -43,9 +79,10 @@ function Login() {
                     Create new Account
                   </p>
             </div>
-            {modal && <SignIn modalState = {this.modal} />}
+            {/* {modal && <SignIn />} */}
+            {modal && Signin()}
         </div>
-    )
+    )    
 }
 
 export default Login
