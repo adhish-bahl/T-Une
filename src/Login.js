@@ -61,7 +61,9 @@ function Login() {
     return (
         <div className='container'>
             <div className="innerBox">
-                <img src={logo} alt="logo" className='logo'/>
+                <Link to="/">
+                    <img src={logo} alt="logo" className='logo'/>
+                </Link>
                 <h1>Login</h1>  
                 <form action="" onSubmit={login}>
                     <label htmlFor="email" id='emailL'>E-mail</label>

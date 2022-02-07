@@ -52,6 +52,11 @@
     margin: 0% 12px;
 }
 
+
+.quizIcon {
+    height: 40px;
+}
+
 ul {
     text-decoration: none;
     list-style-type: none;
