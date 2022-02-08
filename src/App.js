@@ -5,12 +5,19 @@ import Login from './Login';
 import Header from './Header';
 import Footer from './Footer';
 import HomePage from './HomePage';
+import Store from './Store';
 
 function App() {
   return (
     <Router>
         <div className="App">
             <Switch>
+                <Route path="/store">
+                    <Header />
+                    <Store />
+                    <Footer />
+                </Route>
+
                 <Route path="/login">
                     <Login />
                 </Route>
