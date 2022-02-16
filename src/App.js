@@ -12,6 +12,10 @@ function App() {
     <Router>
         <div className="App">
             <Switch>
+                <Route path="/quiz">
+
+                </Route>
+
                 <Route path="/store">
                     <Header />
                     <Store />

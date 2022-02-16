@@ -11,6 +11,15 @@ function Store() {
       <StoreComponent />
       <StoreComponent />
       <StoreComponent />
+      <StoreComponent />
+      <StoreComponent />
+      <StoreComponent />
+      <StoreComponent />
+      <StoreComponent />
+      <StoreComponent />
+      <StoreComponent />
+      <StoreComponent />
+      <StoreComponent />
     </div>
   )
 }

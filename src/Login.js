@@ -51,6 +51,7 @@ function Login() {
                             <input type="date" name="dobLabel" id="dobInput" onChange={e => setDob(e.target.value)} value={dob} />
                             <label htmlFor='numberInput' className="numberLabel">Phone Number</label>
                             <input type="tel" name="numberLabel" id="numberInput" onChange={e => setNumber(e.target.value)} value={number} />
+                            <button id='signinButton' type="submit">Sign In</button>
                             </form>
                         </div>
                     </div>

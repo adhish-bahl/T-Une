@@ -1,19 +1,4 @@
-@-webkit-keyframes swing-in-top-fwd {
-    0% {
-      -webkit-transform: rotateX(-100deg);
-              transform: rotateX(-100deg);
-      -webkit-transform-origin: top;
-              transform-origin: top;
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: rotateX(0deg);
-              transform: rotateX(0deg);
-      -webkit-transform-origin: top;
-              transform-origin: top;
-      opacity: 1;
-    }
-}
+
   @keyframes swing-in-top-fwd {
     0% {
       -webkit-transform: rotateX(-100deg);
@@ -29,6 +14,52 @@
               transform-origin: top;
       opacity: 1;
     }
+}
+
+@keyframes exitAnimation {
+  0% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+
+  5% {
+    animation-timing-function: ease-in;
+    transform: translateY(-30px);
+  }
+
+  15% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+/* 
+  25% {
+    animation-timing-function: ease-in;
+    transform: translateY(-38px);
+  }
+
+  38% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+
+  52% {
+    animation-timing-function: ease-in;
+    transform: translateY(-75px);
+  } */
+
+  70% {
+    animation-timing-function: ease-out;
+    transform: translateY(0);
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-250px);
+  }
 }
 
 body.active-modal {
@@ -67,7 +98,7 @@ body.active-modal {
     line-height: 1.4; */
     /* background: #f1f1f1; */
     background: #504e4e;
-    padding: 14px 28px;
+    padding: 14px 15px;
     border-radius: 3px;
     max-width: 600px;
     min-width: 300px;
@@ -75,9 +106,16 @@ body.active-modal {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    -webkit-animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+    /* -webkit-animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both; */
 	  animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+    /* animation: exitAnimation .5s ease 0s 1 normal forwards; */
     z-index: 5;
+}
+
+.closeModal:hover, #signinButton:hover {
+    transform: scale(1.08);
+    background-color: white;
+    color: #504e4e;
 }
 
 .closeModal {
@@ -85,6 +123,10 @@ body.active-modal {
     top: 10px;
     right: 10px;
     padding: 5px 7px;
+    border-radius: 50%;
+    outline: none;
+    background-color: #504e4e;
+    color: white;
 }
 
 .form > label, .form > input {
@@ -94,7 +136,7 @@ body.active-modal {
 }
 
 input {
-    margin: 7px 0px 20px 0px;
+    margin: 7px 0px 10px 0px;
     border: 0px;
     background-color: transparent;
     border-bottom: 2px solid black;
@@ -102,5 +144,15 @@ input {
     border-radius: 10px;
     box-shadow: 10px 10px 31px -5px rgba(0,0,0,0.75);
     padding: 10px;
+    color: white;
+  }
+  
+  #signinButton {
+    margin: 20px 0px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 31px -5px rgba(0,0,0,0.75);
+    padding: 5px 27px;
+    outline: none;
+    background-color: #504e4e;
     color: white;
 }

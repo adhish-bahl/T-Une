@@ -1,6 +1,6 @@
 import React from 'react';
-import NewsComponent from './NewsComponent';
 import "./HomePage.css"
+import NewsComponent from './NewsComponent';
 
 function HomePage() {
   return(
