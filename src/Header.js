@@ -5,6 +5,7 @@ import explore from "./images/explore.svg";
 import account from "./images/account.svg";
 import store from "./images/store.svg"
 import quiz from "./images/quizlogo.png"
+import trending from "./images/TrendingIcon.svg";
 import "./Header.css";
 import { Link } from "react-router-dom";
 
@@ -18,10 +19,11 @@ function Header() {
         </div>
         <div className="right">
           <ul>
-			  <li><Link to="/"><img className='icon' src={home} alt="HomeIcon" /></Link></li>
+			  <li><Link to="/"><img className='icon active' src={home} alt="HomeIcon" /></Link></li>
 			  <li><Link to="/"><img className='icon' src={explore} alt="ExploreIcon" /></Link></li>
 			  <li><Link to="/store"><img className='icon' src={store} alt="StoreIcon" /></Link></li>
 			  <li><Link to="/quiz"><img className='icon quizIcon' src={quiz} alt="QuizIcon" /></Link></li>
+			  <li><Link to="/trending"><img className='icon' src={trending} alt="TrendingIcon" /></Link></li>
 			  <li><Link to="/login"><img className='icon' src={account} alt="AccountIcon" /></Link></li>
 		  </ul>
 		  <p className="welcomeMessage">Hello, Guest</p>

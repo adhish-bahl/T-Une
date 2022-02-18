@@ -6,12 +6,19 @@ import Header from './Header';
 import Footer from './Footer';
 import HomePage from './HomePage';
 import Store from './Store';
+import FeedbackPage from './FeedbackPage';
 
 function App() {
   return (
     <Router>
         <div className="App">
             <Switch>
+                <Route path="/feedback">
+                    <Header />
+                    <Footer />
+                    <FeedbackPage />
+                </Route>
+
                 <Route path="/quiz">
 
                 </Route>
