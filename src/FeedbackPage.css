@@ -1,0 +1,46 @@
+.feedbackContainer {
+    background: url('./images/FeedbackBG.png') no-repeat center center/cover;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 100vw; */
+    /* height: 100vh; */
+}
+
+#username {
+    background-color: white;
+}
+
+.personicon {
+    height: 50px;
+    width: 50vw;
+    margin-top: 0%;
+}
+
+#feedbackArea {
+    height: 100px;
+    width: 300px;
+    background-color: white;
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+}
+
+.centerContainer {
+    background-color: rgba(255, 255, 255, 0.541);
+    margin: 50px;
+    width: 50vw ;
+    /* box-sizing: ; */
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 10px 10px 24px 0px rgba(0,0,0,0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

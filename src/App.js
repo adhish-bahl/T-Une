@@ -15,8 +15,8 @@ function App() {
             <Switch>
                 <Route path="/feedback">
                     <Header />
-                    <Footer />
                     <FeedbackPage />
+                    <Footer />
                 </Route>
 
                 <Route path="/quiz">
