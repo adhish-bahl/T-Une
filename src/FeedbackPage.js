@@ -15,7 +15,7 @@ function FeedbackPage() {
                     <input type="text" name="username" id="username" placeholder='username' />
                 </div>
                 <div className="bottom">
-                    <input type="text" name="feedbackArea" id="feedbackArea" />
+                    <textarea name="feedbackArea" id="feedbackArea" placeholder='Feedback Here' />
                     <button type="submit" id='submitButton'>Submit</button>
                 </div>
             </div>

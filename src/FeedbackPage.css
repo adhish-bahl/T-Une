@@ -4,8 +4,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 75vh;
     /* width: 100vw; */
-    /* height: 100vh; */
 }
 
 #username {
@@ -14,7 +14,7 @@
 
 .personicon {
     height: 50px;
-    width: 50vw;
+    /* width: 50vw; */
     margin-top: 0%;
 }
 
@@ -22,6 +22,10 @@
     height: 100px;
     width: 300px;
     background-color: white;
+    color: black;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    box-shadow: 10px 10px 31px -5px rgba(0,0,0,0.75);
 }
 
 .bottom {
@@ -29,6 +33,16 @@
     align-items: center;
     justify-content: flex-end;
     flex-direction: column;
+}
+
+#submitButton {
+    margin-top: 20px;
+    font-size: 1.05rem;
+    font-weight: bold;
+    padding: 5px 35px;
+    border: 1px black solid ;
+    border-radius: 10px;
+    box-shadow: 10px 10px 31px -5px rgba(0,0,0,0.75);
 }
 
 .centerContainer {
@@ -43,4 +57,19 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+.top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: row;
+    
+}
+
+.heading {
+    font-weight:bolder;
+    margin-bottom: 10px;
+    font-size: 2rem;
 }
