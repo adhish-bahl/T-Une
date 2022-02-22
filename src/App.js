@@ -7,6 +7,7 @@ import Footer from './Footer';
 import HomePage from './HomePage';
 import Store from './Store';
 import FeedbackPage from './FeedbackPage';
+import ExplorePage from './ExplorePage';
 
 function App() {
   return (
@@ -21,6 +22,12 @@ function App() {
 
                 <Route path="/quiz">
 
+                </Route>
+                
+                <Route path="/explore">
+                    <Header />
+                    <ExplorePage />
+                    <Footer />
                 </Route>
 
                 <Route path="/store">

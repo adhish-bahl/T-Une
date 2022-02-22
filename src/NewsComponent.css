@@ -3,6 +3,8 @@
     grid-template-rows: 6fr 1fr;
     border: 1px solid black;
     margin: 30px;
+    padding-right: 10px;
+    height: fit-content;
     border-radius: 20px;
     box-sizing: border-box;
     /* background-color: rgba(44, 53, 50, 0.466); */

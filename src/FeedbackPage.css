@@ -26,6 +26,8 @@
     font-size: 1.1rem;
     margin-top: 20px;
     box-shadow: 10px 10px 31px -5px rgba(0,0,0,0.75);
+    border-radius: 10px;
+    padding: 5px;
 }
 
 .bottom {
