@@ -21,7 +21,8 @@ function App() {
                 </Route>
 
                 <Route path="/quiz">
-
+                    <Header />
+                    <Footer />
                 </Route>
                 
                 <Route path="/explore">
