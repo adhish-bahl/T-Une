@@ -35,7 +35,7 @@ function Login() {
             <div className='modal'>
                 <div className="overlay">
                     <div className="modalContent">
-                          <h1 className="signin">Sign-Upbs</h1>
+                          <h1 className="signin">Sign-Up</h1>
                         <button className="closeModal" onClick={toggleModal}>X</button>
                           <div className="form">
                               <form >
