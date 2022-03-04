@@ -13,6 +13,7 @@ function StoreComponent() {
                     Product Heading
                 </p>
                 <p className="storeContent">
+                    <p className="productDetails">It is a green color t-shirt which is present across various sizes. It is made for men.</p>
                     <p className="price">Rs. 100</p>
                     <p className="smallHeading"><small>T-Une Rating</small></p>
                     <p className="rating">⭐⭐⭐⭐</p>
