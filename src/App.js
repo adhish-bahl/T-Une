@@ -8,12 +8,19 @@ import HomePage from './HomePage';
 import Store from './Store';
 import FeedbackPage from './FeedbackPage';
 import ExplorePage from './ExplorePage';
+import Trending from './Trending'
 
 function App() {
   return (
     <Router>
         <div className="App">
             <Switch>
+                <Route path="/trending">
+                    <Header />
+                    <Trending />
+                    <Footer />
+                </Route>
+
                 <Route path="/feedback">
                     <Header />
                     <FeedbackPage />

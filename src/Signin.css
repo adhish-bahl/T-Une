@@ -1,4 +1,3 @@
-
   /* @keyframes swing-in-top-fwd {
     0% {
       -webkit-transform: rotateX(-100deg);
@@ -112,7 +111,7 @@ body.active-modal {
     /* background: #f1f1f1; */
     background: #504e4e;
     padding: 14px 15px;
-    border-radius: 3px;
+    border-radius: 5px;
     max-width: 600px;
     min-width: 300px;
     display: flex;
@@ -121,11 +120,33 @@ body.active-modal {
     flex-direction: column;
     /* -webkit-animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both; */
 	  /* animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both; */
-    /* animation: exitAnimation .5s ease 0s 1 normal forwards; */
-
+    
     -webkit-animation: slide-in-bck-center 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-	   animation: slide-in-bck-center 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-bck-center 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     z-index: 5;
+  }
+
+  @-webkit-keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  
+.closeAni {
+  /* animation: exitAnimation .5s ease 0s 1 normal forwards; */
+    -webkit-animation: fade-out 1s ease-out both;
+	  animation: fade-out 1s ease-out both;
 }
 
 .closeModal:hover, #signinButton:hover {

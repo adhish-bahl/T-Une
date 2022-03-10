@@ -28,6 +28,10 @@ function Login() {
 
     const toggleModal = () => {
         setModal(!modal);
+        // if(modal == true) {
+        // }
+        // const modalAni = document.getElementById("modalContent");
+        // modalAni.className = "modalContent, closeAni";
     };
 
     const Signin = () => {
@@ -35,6 +39,7 @@ function Login() {
             <div className='modal'>
                 <div className="overlay">
                     <div className="modalContent">
+                    {/* <div className={` ${quizActive ? 'modalContent' : 'modalContent'}`}>*/}
                           <h1 className="signin">Sign-Up</h1>
                         <button className="closeModal" onClick={toggleModal}>X</button>
                           <div className="form">
