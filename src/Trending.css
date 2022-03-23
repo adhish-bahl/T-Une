@@ -1,8 +1,19 @@
 .trendingContainer {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     background: url('./images/TrendingBG.svg') no-repeat center center/cover;
     background-attachment: fixed;
     min-height: 74.5vh;
+}
+
+table {
+    width: 50vw;
+    background-color: rgba(197, 151, 45, 0.89);
+    font-size: 1.4rem;
+}
+
+table td {
+    padding: 5px 10px;
 }

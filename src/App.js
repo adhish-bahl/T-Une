@@ -9,12 +9,19 @@ import Store from './Store';
 import FeedbackPage from './FeedbackPage';
 import ExplorePage from './ExplorePage';
 import Trending from './Trending'
+import Team from './Team';
 
 function App() {
   return (
     <Router>
         <div className="App">
             <Switch>
+                <Route path="/ourteam">
+                    <Header />
+                    <Team />
+                    <Footer />
+                </Route>
+
                 <Route path="/trending">
                     <Header />
                     <Trending />
@@ -54,6 +61,7 @@ function App() {
                     {/* <h1>This is react App</h1> */}
                     <Footer />
                 </Route>
+
             </Switch>
         </div>
     </Router>

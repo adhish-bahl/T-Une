@@ -5,20 +5,16 @@ function Trending() {
 
 
     const show = () => {
-        const dateDiv = document.getElementById("dateDiv");
-        const container = document.getElementById("container");
+        const container = document.getElementById("trendingTable");
 
         const mostTrending = ["Heat Waves", "Sacrifice", "Paris", "Black Space", "When I gone", "No lie", "It'll be okay", "High School", "Stay", "Unstoppable"];
+        const mostTrendingArtist = ["Heat Waves A", "Sacrifice A", "Paris A", "Black Space A", "When I gone A", "No lie A", "It'll be okay A", "High School A", "Stay A", "Unstoppable A"];
 
-        const date = new Date();
-        const yo = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
-
-        dateDiv.innerHTML = "Top English Songs trending as on " + yo;
+        // dateDiv.innerHTML = "Top English Songs trending as on " + yo;
 
 
         for(let i = 0; i < mostTrending.length; i++) {
-            const para = document.createElement("p");       
-
+            const para = document.createElement("tr");
             const node = document.createTextNode((i+1) +")  " + mostTrending[i]);
             para.appendChild(node);
             container.appendChild(para);
@@ -32,8 +28,11 @@ function Trending() {
 
   return (
     <div className='trendingContainer'>
-        <div className="heading">Trending</div>
+        <div className="heading">Trending Tracks</div>
         <div className="section">
+            <div className="trendingTable" id='trendingTable'>
+
+            </div>
             <table border="1">
                 <tr>
                     <th>S. No.</th>

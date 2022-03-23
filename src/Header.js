@@ -74,47 +74,67 @@ function Header() {
   // }
 
   const handleHome = () => {
-    setHomeActive(homeActive => !homeActive);
-    setExploreActive(exploreActive => false);
-    setStoreActive(storeActive => false);
-    setQuizActive(quizActive => false);
-    setTrendingActive(trendingActive => false);
+    // const url = document.URL.slice(document.URL.lastIndexOf("/")+1, document.URL.length);
+    if(homeActive == true) {
+      setHomeActive(homeActive = true);
+    }
+    else {
+      setHomeActive(homeActive => !homeActive);
+      setExploreActive(exploreActive => false);
+      setStoreActive(storeActive => false);
+      setQuizActive(quizActive => false);
+      setTrendingActive(trendingActive => false);
+    }
   }
   const handleExplore = () => {
-    setHomeActive(homeActive => false);
-    setExploreActive(exploreActive => !exploreActive);
-    setStoreActive(storeActive => false);
-    setQuizActive(quizActive => false);
-    setTrendingActive(trendingActive => false);
+    if(exploreActive == true) {}
+    else {
+      setHomeActive(homeActive => false);
+      setExploreActive(exploreActive => !exploreActive);
+      setStoreActive(storeActive => false);
+      setQuizActive(quizActive => false);
+      setTrendingActive(trendingActive => false);
+    }
   }
   const handleStore = () => {
-    setHomeActive(homeActive => false);
-    setExploreActive(exploreActive => false);
-    setStoreActive(storeActive => !storeActive);
-    setQuizActive(quizActive => false);
-    setTrendingActive(trendingActive => false);
+    if(storeActive == true) {}
+    else {
+      setHomeActive(homeActive => false);
+      setExploreActive(exploreActive => false);
+      setStoreActive(storeActive => !storeActive);
+      setQuizActive(quizActive => false);
+      setTrendingActive(trendingActive => false);
+    }
   }
   const handleQuiz = () => {
-    setHomeActive(homeActive => false);
-    setExploreActive(exploreActive => false);
-    setStoreActive(storeActive => false);
-    setQuizActive(quizActive => !quizActive);
-    setTrendingActive(trendingActive => false);
+    if(quizActive == true) {}
+    else {
+      setHomeActive(homeActive => false);
+      setExploreActive(exploreActive => false);
+      setStoreActive(storeActive => false);
+      setQuizActive(quizActive => !quizActive);
+      setTrendingActive(trendingActive => false);
+    }
   }
   const handleTrending = () => {
-    setHomeActive(homeActive => false);
-    setExploreActive(exploreActive => false);
-    setStoreActive(storeActive => false);
-    setQuizActive(quizActive => false);
-    setTrendingActive(trendingActive => !trendingActive);
+    if(trendingActive == true) {}
+    else {
+      setHomeActive(homeActive => false);
+      setExploreActive(exploreActive => false);
+      setStoreActive(storeActive => false);
+      setQuizActive(quizActive => false);
+      setTrendingActive(trendingActive => !trendingActive);
+    }
   }
 
   return (
     <div className="backest">
     <div className='header'>
         <div className="left">
-          <img className='logoImg' src={logo} alt="Logo" />
-          <span className="companyName">T-Une</span>
+          <Link to="/" className="logoandname" onClick={handleHome} >
+            <img className='logoImg' src={logo} alt="Logo" />
+            <span className="companyName">T-Une</span>
+          </Link>
         </div>
         <div className="right">
           <ul>

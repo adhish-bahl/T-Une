@@ -1,0 +1,38 @@
+.teamContainer {
+    background: url('./images/TeamBG.svg') no-repeat center center/cover;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 10px;
+}
+
+.teamPicture {
+    width: 500px;
+}
+
+.lower h1 {
+    text-decoration: underline;
+}
+
+.information, .information div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.information div {
+    flex-direction: column;
+}
+
+.name {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 10px 0px;
+}
+
+.intro {
+    font-size: 1.2rem;
+    text-align: justify;
+}
