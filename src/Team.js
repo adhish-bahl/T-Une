@@ -1,6 +1,6 @@
 import React from 'react';
 import "./Team.css";
-import teamImg from "./images/FeedbackBG.png";
+import teamImg from "./images/TeamPicture.jpg";
 
 function Team() {
   return (
