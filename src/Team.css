@@ -16,13 +16,17 @@
     text-decoration: underline;
 }
 
-.information, .information div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.information{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* align-items: center; */
+    /* justify-content: center; */
 }
 
 .information div {
+    display: flex;
+    justify-content: center;
+    align-items: center ;
     flex-direction: column;
 }
 

@@ -13,7 +13,8 @@ function Team() {
             <div className="information">
                 <div className="left">
                     <div className="name">Adhish Bahl</div>
-                    <div className="intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam autem, veritatis aspernatur optio provident dolorem molestiae non odio inventore quasi dolorum. Deserunt, voluptatum nam adipisci vitae placeat unde aliquam sint aut ducimus illo deleniti ipsa doloribus corrupti cum numquam eos obcaecati non similique aliquid vel eum minima a perferendis autem!</div>
+                    <div className="intro">I am a self taught web developer and I am more interested in Front-end development. My experties are HTML v5, CSS v3, JavaScript along with ReactJS for front end development. Other then web development, Video Editing also interests me. Also I am coffee addict.
+                    </div>
                 </div>
                 <div className="center">
                     <div className="name">Gayathri S.</div>
