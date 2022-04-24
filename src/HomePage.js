@@ -1,28 +1,26 @@
 import React, {useState, useEffect} from 'react';
 import "./HomePage.css";
 import NewsComponent from './NewsComponent';
-import NewsComponent3 from './NewsComponent3';
 import axiosbaseurl from './axiosbaseurl';
-import axios from 'axios';
-
-
-
 
 function HomePage() {
   
-  const [data, setdata] = useState({});
+  const [data, setData] = useState([]);
+
   // const [isLoading, setisLoading] = useState(true);
   // const [itemsArray, setItemsArray] = useState([]);
   // const [displayArray, setDisplayArray] = useState([]);
 
+  // useEffect(() => {
+  //   axiosbaseurl.get("GetSalesData.php").then((response) => {
+  //     setData(response.data);
+  //   });
+  // }, []);
 
   useEffect(() => {
-
     async function fetchData() {
-      const request = await axiosbaseurl.get("GetSalesData.php");
-      // console.log(request.data[0]);
-      console.log(typeof request.data[0]);
-      // setdata(data = request.data[0]);
+      const request = await axiosbaseurl.get("Posts.php");
+      setData(request.data);
       return request;
     }
     fetchData();
@@ -41,42 +39,43 @@ function HomePage() {
 
     //     console.log(data);
 
-  }, [data]);
+  }, []);
 
-    // console.log(data);
+    // console.log(typeof(data));
 
-
-// componentDidMount() {
-//     axios.get('http://localhost/DBMS%20Project/GetSalesData.php')
-//     .then(res => 
-//     {
-//       this.setState({data: res.data});
-//     });
-//   };
-
-
-
-//   useEffect(() => {
-//     axios.get('http://localhost/DBMS%20Project/GetSalesData.php')
-//         .then(response => setTotalReactPackages(response.data.total));
-// }, []);
-// console.log(data);
-
-
-// shaam ko free ho ke call karna
+    // var newsCom = [];
+    //   for(var i = 0; i < 4; i++) {
+    //     newsCom.push(
+    //         <NewsComponent
+    //            key = {data[i].postId}
+    //            heading = {data[i].summary}
+    //            content = {data[i].content}
+    //            imgLink = {data[i].imgLink}
+    //            likes = {data[i].likes}
+    //         />
+    //     )
+    //   }
 
   return(
     <div className='homeContainer'>
-        <NewsComponent />
-        <NewsComponent3 />
-        <NewsComponent />
-        <NewsComponent3 />
-        <NewsComponent />
-        <NewsComponent />
-        <NewsComponent3 />
-        <NewsComponent />
-        <NewsComponent3 />
-        <NewsComponent3 />
+
+      {/* {newsCom} */}
+
+        {
+          data.map(post => {
+                return (
+                  <div key={post.postId}>
+                    <NewsComponent
+                        heading = {post.summary}
+                        content = {post.content}
+                        imgLink = {post.imgLink}
+                        likes = {post.likes}
+                    />
+                  </div>
+                );
+              })
+          }
+      
     </div>)
 }
 

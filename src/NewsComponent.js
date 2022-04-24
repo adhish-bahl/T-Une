@@ -4,10 +4,11 @@ import likeIcon from "./images/like.svg";
 import likedIcon from "./images/liked.svg";
 import share from "./images/share.svg";
 
-function NewsComponent() {
+// function NewsComponent({key, imgLink, heading,  content, likes}) {
+function NewsComponent(props) {
 
     const [like, setlike] = useState(false);
-    const [likeCount, setLikeCount] = useState(10);
+    const [likeCount, setLikeCount] = useState(props.likes);
 
     const likeManager = () => {
         if(like) {
@@ -20,6 +21,8 @@ function NewsComponent() {
         }
     }
 
+    // console.log(heading);
+
   return (
     <div className='newsContainer'>
         <div className="newsUpper">
@@ -28,9 +31,13 @@ function NewsComponent() {
             </div>
             <div className="newsRight">
                 <p className="newsHeading">
-                    Mortal remains of Indians killed in drone attack in Abu Dhabi reach Punjab
+                    {props.heading}
+                    {/* Mortal remains of Indians killed in drone attack in Abu Dhabi reach Punjab */}
                 </p>
-                <p className="newsContent">The mortal remains of the two Indians who were killed in a drone attack in Abu Dhabi reached Punjab on Friday. On January 17, Hardev Singh (35) and Hardeep Singh (28), and a Pakistani national, all staff of the Abu Dhabi National Oil Company were killed and six others injured in suspected drone attacks near the UAE capital's airport. The attacks were claimed by Yemen's Houthi rebels.</p>
+                <p className="newsContent">
+                    {props.content}
+                    {/* The mortal remains of the two Indians who were killed in a drone attack in Abu Dhabi reached Punjab on Friday. On January 17, Hardev Singh (35) and Hardeep Singh (28), and a Pakistani national, all staff of the Abu Dhabi National Oil Company were killed and six others injured in suspected drone attacks near the UAE capital's airport. The attacks were claimed by Yemen's Houthi rebels. */}
+                    </p>
             </div>
         </div>
         <div className="newsLower">
