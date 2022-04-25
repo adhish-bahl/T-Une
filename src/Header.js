@@ -7,7 +7,7 @@ import store from "./images/store.svg"
 import quiz from "./images/quizlogo.png"
 import trending from "./images/TrendingIcon.svg";
 import "./Header.css";
-import { Link } from "react-router-dom";  
+import { Link, Redirect } from "react-router-dom";  
 
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -74,6 +74,7 @@ function Header() {
   // }
 
   const handleHome = () => {
+    <Redirect to="/" />
     // const url = document.URL.slice(document.URL.lastIndexOf("/")+1, document.URL.length);
     if(homeActive == true) {
       setHomeActive(homeActive = true);
