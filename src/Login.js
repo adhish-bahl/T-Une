@@ -5,6 +5,7 @@ import "./Login.css";
 import "./Signin.css"
 import showPassword from "./images/show-password.svg";
 import hidePassword from "./images/hide-password.svg";
+import axiosbaseurl from "./axiosbaseurl";
 
 function Login() {
 
@@ -21,10 +22,13 @@ function Login() {
     const [modal, setModal] = useState(false);
     const [isRevealPwd, setIsRevealPwd] = useState(false);
 
-    const login = e =>{
-        console.log(email + pwd);
-        e.prevDefault();
-    }
+    // const login = e =>{
+    //     console.log(email + pwd);
+    //     e.prevDefault();
+    // }
+
+    const [data, setData] = useState([]);
+
 
     const toggleModal = () => {
         setModal(!modal);
@@ -33,6 +37,34 @@ function Login() {
         // const modalAni = document.getElementById("modalContent");
         // modalAni.className = "modalContent, closeAni";
     };
+
+    const handleSignIn = (e) => {
+
+        e.preventDefault();
+        console.log(name + email1 + pwd1 + pwd2 + dob + number)
+ 
+        if(pwd1===pwd2){
+            let obj = {
+            fname: name,
+            password: pwd1,
+            dob: dob,
+            phno: number,
+        };
+        axiosbaseurl.post(`SignIn.php?fname=`+name+"&password="+pwd1+"&dob="+dob+"&phno="+number)
+        // axiosbaseurl.post("SignIn.php", obj)
+        .then(res => {
+            console.log(res);
+        })
+        }
+
+
+        // const xhttp = new XMLHttpRequest();
+        // xhttp.onload = function() {
+        //     console.log(this.responseText);
+        // }
+        // xhttp.open("POST", "http://localhost/DBMS%20Project/SignIn.php?fname="+name+"&password="+pwd1+"&dob="+dob+"&phno="+number);
+        // xhttp.send();
+    }
 
     const Signin = () => {
           return (
@@ -43,19 +75,25 @@ function Login() {
                           <h1 className="signin">Sign-Up</h1>
                         <button className="closeModal" onClick={toggleModal}>X</button>
                           <div className="form">
-                              <form >
+                            <form onSubmit={handleSignIn}>
                             <label htmlFor='nameInput' className="nameLabel">Name</label>
-                            <input type="text" name="nameLabel" id="nameInput" onChange={e => setName(e.target.value)} value={name} />
+                            {/* <input type="text" name="nameLabel" id="nameInput" onChange={e => setName(e.target.value)} value={name} /> */}
+                            <input type="text" name="nameLabel" id="nameInput" onChange={e => setName(e.target.value)} />
                             <label htmlFor='emailInput' className="emailLabel">E-mail id</label>
-                            <input type="email" name="emailLabel" id="emailInput" onChange={e => setEmail1(e.target.value)} value={email1} />
+                            <input type="email" name="emailLabel" id="emailInput" onChange={e => setEmail1(e.target.value)} />
+                            {/* <input type="email" name="emailLabel" id="emailInput" onChange={e => setEmail1(e.target.value)} value={email1} /> */}
                             <label htmlFor='password1Input' className="password1Label">Password</label>
-                            <input type="password" name="password1Label" id="password1Input" onChange={e => setPwd1(e.target.value)} value={pwd1} />
+                            <input type="password" name="password1Label" id="password1Input" onChange={e => setPwd1(e.target.value)}  />
+                            {/* <input type="password" name="password1Label" id="password1Input" onChange={e => setPwd1(e.target.value)} value={pwd1} /> */}
                             <label htmlFor='password2Input' className="password2Label">Re-enter your password</label>
-                            <input type="password" name="password2Label" id="password2Input" onChange={e => setPwd2(e.target.value)} value={pwd2} />
+                            <input type="password" name="password2Label" id="password2Input" onChange={e => setPwd2(e.target.value)}  />
+                            {/* <input type="password" name="password2Label" id="password2Input" onChange={e => setPwd2(e.target.value)} value={pwd2} /> */}
                             <label htmlFor='dobInput' className="dobLabel">Date of Birth</label>
-                            <input type="date" name="dobLabel" id="dobInput" onChange={e => setDob(e.target.value)} value={dob} />
+                            <input type="date" name="dobLabel" id="dobInput" onChange={e => setDob(e.target.value)}  />
+                            {/* <input type="date" name="dobLabel" id="dobInput" onChange={e => setDob(e.target.value)} value={dob} /> */}
                             <label htmlFor='numberInput' className="numberLabel">Phone Number</label>
-                            <input type="tel" name="numberLabel" id="numberInput" onChange={e => setNumber(e.target.value)} value={number} />
+                            <input type="tel" name="numberLabel" id="numberInput" onChange={e => setNumber(e.target.value)}  />
+                            {/* <input type="tel" name="numberLabel" id="numberInput" onChange={e => setNumber(e.target.value)} value={number} /> */}
                             <button id='signinButton' type="submit">Sign In</button>
                             </form>
                         </div>
@@ -71,12 +109,12 @@ function Login() {
                     <img src={logo} alt="logo" className='logo'/>
                 </Link>
                 <h1>Login</h1>  
-                <form action="" onSubmit={login}>
+                <form action="login.php" method="post">
                     <label htmlFor="email" id='emailL'>E-mail</label>
                     <input required type="email" name="email" id="email" onChange={e => setEmail(e.target.value)} value={email} />
                     <label htmlFor="password" id='passwordL'>Password</label>
                     <div className="pwdContainer">
-                        <input required name="password" id='password' className="passwordInput" type={isRevealPwd ? "text" : "password"} value={pwd} onchange={(e) => setPwd(e.target.value)} />
+                        <input required name="password" id='password' className="passwordInput" type={isRevealPwd ? "text" : "password"} value={pwd} onChange={(e) => setPwd(e.target.value)} />
                         <img alt="showPassword"  className='pwd-toggle' title={isRevealPwd ? "Hide password" : "Show password"} src={isRevealPwd ? showPassword : hidePassword} onClick={() => setIsRevealPwd(prevState => !prevState)} />
                     </div>
                     <button type="submit" id='loginButton'>Log-in</button>
