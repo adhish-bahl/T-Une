@@ -41,29 +41,25 @@ function Login() {
     const handleSignIn = (e) => {
 
         e.preventDefault();
-        console.log(name + email1 + pwd1 + pwd2 + dob + number)
+        console.log(name + email1 + pwd1 + pwd2 + dob + number + typeof(email1));
+        const year = parseInt(email1.substring(email1.length - 4));
+        
+
+
  
-        if(pwd1===pwd2){
-            let obj = {
-            fname: name,
-            password: pwd1,
-            dob: dob,
-            phno: number,
-        };
-        axiosbaseurl.post(`SignIn.php?fname=`+name+"&password="+pwd1+"&dob="+dob+"&phno="+number)
-        // axiosbaseurl.post("SignIn.php", obj)
-        .then(res => {
-            console.log(res);
-        })
+        
+        // axiosbaseurl.post(`SignIn.php?fname=`+name+"&password="+pwd1+"&dob="+dob+"&phno="+number)
+        // // axiosbaseurl.post("SignIn.php", obj)
+        // .then(res => {
+        //     console.log(res);
+        // })
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            console.log(this.responseText);
         }
+        xhttp.open("POST", "http://localhost/DBMS%20Project/SignIn.php?fname="+name+"&password="+pwd1+"&dob="+dob+"&phno="+number+"&email="+email1);
+        xhttp.send();
 
-
-        // const xhttp = new XMLHttpRequest();
-        // xhttp.onload = function() {
-        //     console.log(this.responseText);
-        // }
-        // xhttp.open("POST", "http://localhost/DBMS%20Project/SignIn.php?fname="+name+"&password="+pwd1+"&dob="+dob+"&phno="+number);
-        // xhttp.send();
     }
 
     const Signin = () => {
