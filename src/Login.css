@@ -112,3 +112,7 @@ input {
     width: 25px;
     padding-right: 8px;
 }
+
+.message {
+    width: 234px;
+}

@@ -9,12 +9,15 @@ import axiosbaseurl from "./axiosbaseurl";
 
 function Login() {
 
+    const [messageBoxContent, setMessageBoxContent] = useState();
+
     const [name, setName] = useState();
     const [email1, setEmail1] = useState();
     const [pwd1, setPwd1] = useState();
     const [pwd2, setPwd2] = useState();
     const [dob, setDob] = useState();
     const [number, setNumber] = useState();
+    const [signRes, setSignRes] = useState("Success");
 
     const [email, setEmail] = useState();
     const [pwd, setPwd] = useState();
@@ -41,24 +44,36 @@ function Login() {
     const handleSignIn = (e) => {
 
         e.preventDefault();
-        console.log(name + email1 + pwd1 + pwd2 + dob + number + typeof(email1));
-        const year = parseInt(email1.substring(email1.length - 4));
-        
-
-
- 
-        
+        var currentTime = new Date();
+        const age = (currentTime.getFullYear() - parseInt(dob.substring(0, 4))); 
+        // console.log(age);
         // axiosbaseurl.post(`SignIn.php?fname=`+name+"&password="+pwd1+"&dob="+dob+"&phno="+number)
         // // axiosbaseurl.post("SignIn.php", obj)
         // .then(res => {
         //     console.log(res);
         // })
-        const xhttp = new XMLHttpRequest();
-        xhttp.onload = function() {
-            console.log(this.responseText);
+
+        if(pwd1 === pwd2) {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+                console.log(this.responseText);
+                setSignRes(this.responseText);
+                console.log(signRes);
+                if(signRes === "Success") {
+                    // console.log("inside if");
+                    setMessageBoxContent("Account created successfully! Please log-in");
+                    setTimeout(function() {
+                        toggleModal();
+                    }, 3000);
+                } else {
+                    // console.log("inside else");
+                    setMessageBoxContent("Oops, something went wrong. Check all details and try again.")
+                }
+            }
+            xhttp.open("POST", "http://localhost/DBMS%20Project/SignIn.php?fname="+name+"&password="+pwd1+"&dob="+dob+"&phno="+number+"&email="+email1+"&age="+age);
+            xhttp.send();
+            
         }
-        xhttp.open("POST", "http://localhost/DBMS%20Project/SignIn.php?fname="+name+"&password="+pwd1+"&dob="+dob+"&phno="+number+"&email="+email1);
-        xhttp.send();
 
     }
 
@@ -74,24 +89,25 @@ function Login() {
                             <form onSubmit={handleSignIn}>
                             <label htmlFor='nameInput' className="nameLabel">Name</label>
                             {/* <input type="text" name="nameLabel" id="nameInput" onChange={e => setName(e.target.value)} value={name} /> */}
-                            <input type="text" name="nameLabel" id="nameInput" onChange={e => setName(e.target.value)} />
+                            <input type="text" name="nameLabel" id="nameInput" required onChange={e => setName(e.target.value)} defaultValue="" />
                             <label htmlFor='emailInput' className="emailLabel">E-mail id</label>
-                            <input type="email" name="emailLabel" id="emailInput" onChange={e => setEmail1(e.target.value)} />
+                            <input type="email" name="emailLabel" id="emailInput" required onChange={e => setEmail1(e.target.value)} />
                             {/* <input type="email" name="emailLabel" id="emailInput" onChange={e => setEmail1(e.target.value)} value={email1} /> */}
                             <label htmlFor='password1Input' className="password1Label">Password</label>
-                            <input type="password" name="password1Label" id="password1Input" onChange={e => setPwd1(e.target.value)}  />
+                            <input type="password" name="password1Label" id="password1Input" required onChange={e => setPwd1(e.target.value)}  />
                             {/* <input type="password" name="password1Label" id="password1Input" onChange={e => setPwd1(e.target.value)} value={pwd1} /> */}
                             <label htmlFor='password2Input' className="password2Label">Re-enter your password</label>
-                            <input type="password" name="password2Label" id="password2Input" onChange={e => setPwd2(e.target.value)}  />
+                            <input type="password" name="password2Label" id="password2Input" required onChange={e => setPwd2(e.target.value)}  />
                             {/* <input type="password" name="password2Label" id="password2Input" onChange={e => setPwd2(e.target.value)} value={pwd2} /> */}
                             <label htmlFor='dobInput' className="dobLabel">Date of Birth</label>
-                            <input type="date" name="dobLabel" id="dobInput" onChange={e => setDob(e.target.value)}  />
+                            <input type="date" name="dobLabel" id="dobInput" required onChange={e => setDob(e.target.value)}  />
                             {/* <input type="date" name="dobLabel" id="dobInput" onChange={e => setDob(e.target.value)} value={dob} /> */}
                             <label htmlFor='numberInput' className="numberLabel">Phone Number</label>
-                            <input type="tel" name="numberLabel" id="numberInput" onChange={e => setNumber(e.target.value)}  />
+                            <input type="tel" name="numberLabel" id="numberInput" required onChange={e => setNumber(e.target.value)}  />
                             {/* <input type="tel" name="numberLabel" id="numberInput" onChange={e => setNumber(e.target.value)} value={number} /> */}
                             <button id='signinButton' type="submit">Sign In</button>
                             </form>
+                            <div className="message">{messageBoxContent}</div>
                         </div>
                     </div>
                 </div>
