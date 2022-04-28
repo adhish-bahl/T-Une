@@ -9,7 +9,8 @@ import axiosbaseurl from "./axiosbaseurl";
 
 function Login() {
 
-    const [messageBoxContent, setMessageBoxContent] = useState();
+    const [signInMessageBoxContent, setSignInMessageBoxContent] = useState();
+    const [logInMessageBoxContent, setLogInMessageBoxContent] = useState();
 
     const [name, setName] = useState();
     const [email1, setEmail1] = useState();
@@ -18,19 +19,20 @@ function Login() {
     const [dob, setDob] = useState();
     const [number, setNumber] = useState();
     const [signRes, setSignRes] = useState("Success");
+    const [logRes, setLogRes] = useState("Success");
 
     const [email, setEmail] = useState();
-    const [pwd, setPwd] = useState();
+    const [password, setPwd] = useState();
 
     const [modal, setModal] = useState(false);
     const [isRevealPwd, setIsRevealPwd] = useState(false);
+    
+    const [data, setData] = useState([]);
 
     // const login = e =>{
     //     console.log(email + pwd);
     //     e.prevDefault();
     // }
-
-    const [data, setData] = useState([]);
 
     const toggleModal = () => {
         setModal(!modal);
@@ -44,12 +46,12 @@ function Login() {
                 console.log(this.responseText);
                 setSignRes(this.responseText);
                 if(signRes === "Success") {
-                    setMessageBoxContent("Account created successfully! Please log-in");
+                    setSignInMessageBoxContent("Account created successfully! Please log-in");
                     setTimeout(function() {
                         toggleModal();
                     }, 3000);
                 } else {
-                    setMessageBoxContent("Oops, something went wrong. Check all details and try again.")
+                    setSignInMessageBoxContent("Oops, something went wrong. Check all details and try again.")
                 }
             }
             xhttp.open("POST", "http://localhost/DBMS%20Project/SignIn.php?fname="+name+"&password="+pwd1+"&dob="+dob+"&phno="+number+"&email="+email1+"&age="+age);
@@ -59,7 +61,6 @@ function Login() {
 
     const handleSignIn = (e) => {
         e.preventDefault();
-
         
         // console.log(age);
         // axiosbaseurl.post(`SignIn.php?fname=`+name+"&password="+pwd1+"&dob="+dob+"&phno="+number)
@@ -73,20 +74,38 @@ function Login() {
         if(pwd1 === pwd2) {
             if(pwd1.length < 8)
             {
-                setMessageBoxContent("Password  must be atleast 8 characters.")
+                setSignInMessageBoxContent("Password  must be atleast 8 characters.")
             } else {
                 if(!regularExpression.test(pwd1))
                 {
-                    setMessageBoxContent("Password must have atleast one number and special character.")
+                    setSignInMessageBoxContent("Password must have atleast one number and special character.")
                 } else {
                     makeSignInRequest();
                 }
             }
         } else {
-            setMessageBoxContent("Passwords does not match.");
+            setSignInMessageBoxContent("Passwords does not match.");
         }
+    }
 
-        
+    const handleLogIn = (e) => {
+        e.preventDefault();
+
+        const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+                console.log(this.responseText);
+                setLogRes(this.responseText);
+                if(logRes === "Success") {
+                    setSignInMessageBoxContent("Account created successfully! Please log-in");
+                    setTimeout(function() {
+                        toggleModal();
+                    }, 3000);
+                } else {
+                    setSignInMessageBoxContent("Oops, something went wrong. Check all details and try again.")
+                }
+            }
+            xhttp.open("POST", "http://localhost/DBMS%20Project/SignIn.php?email="+email+"&password="+password);
+            xhttp.send();
     }
 
     const Signin = () => {
@@ -123,7 +142,7 @@ function Login() {
                             {/* <input type="tel" name="numberLabel" id="numberInput" onChange={e => setNumber(e.target.value)} value={number} /> */}
                             <button id='signinButton' type="submit">Sign In</button>
                             </form>
-                            <div className="message">{messageBoxContent}</div>
+                            <div className="message">{signInMessageBoxContent}</div>
                         </div>
                     </div>
                 </div>
@@ -137,23 +156,25 @@ function Login() {
                     <img src={logo} alt="logo" className='logo'/>
                 </Link>
                 <h1>Login</h1>  
-                <form action="login.php" method="post">
+                <form onSubmit={handleLogIn}>
                     <label htmlFor="email" id='emailL'>E-mail</label>
-                    <input required type="email" name="email" id="email" onChange={e => setEmail(e.target.value)} value={email} />
+                    <input required type="email" name="email" id="email" onChange={e => setEmail(e.target.value)} />
                     <label htmlFor="password" id='passwordL'>Password</label>
                     <div className="pwdContainer">
-                        <input required name="password" id='password' className="passwordInput" type={isRevealPwd ? "text" : "password"} value={pwd} onChange={(e) => setPwd(e.target.value)} />
+                        <input required name="password" id='password' className="passwordInput" type={isRevealPwd ? "text" : "password"} onChange={(e) => setPwd(e.target.value)} />
                         <img alt="showPassword"  className='pwd-toggle' title={isRevealPwd ? "Hide password" : "Show password"} src={isRevealPwd ? showPassword : hidePassword} onClick={() => setIsRevealPwd(prevState => !prevState)} />
                     </div>
                     <button type="submit" id='loginButton'>Log-in</button>
                 </form>
+
+                <div className="message">{logInMessageBoxContent}</div>
+
                 <p className="terms">By continuing, you agree to T-Une's Conditions of Use and Privacy Notice.</p>
-                {/* <p className="terms"><hr /></p> */}
                   <p className="newAccount" onClick={toggleModal} >
                     Create new Account
                   </p>
             </div>
-            {/* {modal && <SignIn />} */}
+
             {modal && Signin()}
         </div>
     )    
