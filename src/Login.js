@@ -32,20 +32,35 @@ function Login() {
 
     const [data, setData] = useState([]);
 
-
     const toggleModal = () => {
         setModal(!modal);
-        // if(modal == true) {
-        // }
-        // const modalAni = document.getElementById("modalContent");
-        // modalAni.className = "modalContent, closeAni";
     };
 
-    const handleSignIn = (e) => {
-
-        e.preventDefault();
+    const makeSignInRequest = () => {
         var currentTime = new Date();
         const age = (currentTime.getFullYear() - parseInt(dob.substring(0, 4))); 
+         const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+                console.log(this.responseText);
+                setSignRes(this.responseText);
+                if(signRes === "Success") {
+                    setMessageBoxContent("Account created successfully! Please log-in");
+                    setTimeout(function() {
+                        toggleModal();
+                    }, 3000);
+                } else {
+                    setMessageBoxContent("Oops, something went wrong. Check all details and try again.")
+                }
+            }
+            xhttp.open("POST", "http://localhost/DBMS%20Project/SignIn.php?fname="+name+"&password="+pwd1+"&dob="+dob+"&phno="+number+"&email="+email1+"&age="+age);
+            xhttp.send();
+    }
+
+
+    const handleSignIn = (e) => {
+        e.preventDefault();
+
+        
         // console.log(age);
         // axiosbaseurl.post(`SignIn.php?fname=`+name+"&password="+pwd1+"&dob="+dob+"&phno="+number)
         // // axiosbaseurl.post("SignIn.php", obj)
@@ -53,28 +68,25 @@ function Login() {
         //     console.log(res);
         // })
 
+        var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+
         if(pwd1 === pwd2) {
-            const xhttp = new XMLHttpRequest();
-            xhttp.onload = function() {
-                console.log(this.responseText);
-                setSignRes(this.responseText);
-                console.log(signRes);
-                if(signRes === "Success") {
-                    // console.log("inside if");
-                    setMessageBoxContent("Account created successfully! Please log-in");
-                    setTimeout(function() {
-                        toggleModal();
-                    }, 3000);
+            if(pwd1.length < 8)
+            {
+                setMessageBoxContent("Password  must be atleast 8 characters.")
+            } else {
+                if(!regularExpression.test(pwd1))
+                {
+                    setMessageBoxContent("Password must have atleast one number and special character.")
                 } else {
-                    // console.log("inside else");
-                    setMessageBoxContent("Oops, something went wrong. Check all details and try again.")
+                    makeSignInRequest();
                 }
             }
-            xhttp.open("POST", "http://localhost/DBMS%20Project/SignIn.php?fname="+name+"&password="+pwd1+"&dob="+dob+"&phno="+number+"&email="+email1+"&age="+age);
-            xhttp.send();
-            
+        } else {
+            setMessageBoxContent("Passwords does not match.");
         }
 
+        
     }
 
     const Signin = () => {
@@ -94,7 +106,11 @@ function Login() {
                             <input type="email" name="emailLabel" id="emailInput" required onChange={e => setEmail1(e.target.value)} />
                             {/* <input type="email" name="emailLabel" id="emailInput" onChange={e => setEmail1(e.target.value)} value={email1} /> */}
                             <label htmlFor='password1Input' className="password1Label">Password</label>
-                            <input type="password" name="password1Label" id="password1Input" required onChange={e => setPwd1(e.target.value)}  />
+                            {/* <input type="password" name="password1Label" id="password1Input" required onChange={e => setPwd1(e.target.value)}  /> */}
+                            <div className="pwdContainer">
+                                <input required name="password1Label" id='password1Input' type={isRevealPwd ? "text" : "password"} onChange={(e) => setPwd1(e.target.value)} />
+                                <img alt="showPassword"  className='pwd-toggle' title={isRevealPwd ? "Hide password" : "Show password"} src={isRevealPwd ? showPassword : hidePassword} onClick={() => setIsRevealPwd(prevState => !prevState)} />
+                            </div>
                             {/* <input type="password" name="password1Label" id="password1Input" onChange={e => setPwd1(e.target.value)} value={pwd1} /> */}
                             <label htmlFor='password2Input' className="password2Label">Re-enter your password</label>
                             <input type="password" name="password2Label" id="password2Input" required onChange={e => setPwd2(e.target.value)}  />
