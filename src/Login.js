@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link} from "react-router-dom";
+import { Link, useHistory } from 'react-router-dom';
 import logo from "./images/tune.jpg";
 import "./Login.css";
 import "./Signin.css"
@@ -7,7 +7,7 @@ import showPassword from "./images/show-password.svg";
 import hidePassword from "./images/hide-password.svg";
 import axiosbaseurl from "./axiosbaseurl";
 
-function Login() {
+function Login(props) {
 
     const [signInMessageBoxContent, setSignInMessageBoxContent] = useState();
     const [logInMessageBoxContent, setLogInMessageBoxContent] = useState();
@@ -19,7 +19,7 @@ function Login() {
     const [dob, setDob] = useState();
     const [number, setNumber] = useState();
     const [signRes, setSignRes] = useState("Success");
-    const [logRes, setLogRes] = useState("Success");
+    const [logRes, setLogRes] = useState();
 
     const [email, setEmail] = useState();
     const [password, setPwd] = useState();
@@ -28,6 +28,7 @@ function Login() {
     const [isRevealPwd, setIsRevealPwd] = useState(false);
     
     const [data, setData] = useState([]);
+    const history = useHistory();
 
     // const login = e =>{
     //     console.log(email + pwd);
@@ -49,6 +50,7 @@ function Login() {
                     setSignInMessageBoxContent("Account created successfully! Please log-in");
                     setTimeout(function() {
                         toggleModal();
+                        setSignInMessageBoxContent("");
                     }, 3000);
                 } else {
                     setSignInMessageBoxContent("Oops, something went wrong. Check all details and try again.")
@@ -89,23 +91,41 @@ function Login() {
     }
 
     const handleLogIn = (e) => {
+
         e.preventDefault();
 
         const xhttp = new XMLHttpRequest();
             xhttp.onload = function() {
-                console.log(this.responseText);
-                setLogRes(this.responseText);
-                if(logRes === "Success") {
-                    setSignInMessageBoxContent("Account created successfully! Please log-in");
-                    setTimeout(function() {
-                        toggleModal();
-                    }, 3000);
+                const incomingData = JSON.parse(this.responseText)
+                setLogRes(incomingData.result);
+                console.log(logRes);
+                // console.log(incomingData.result);
+                if(logRes === "Login Succesful") {
+                    setLogInMessageBoxContent("Logged In Sucessfully!");
+                    props.authentication(true);
+                    props.getEmail(incomingData.email);
+                    props.getName(incomingData.name);
+                    history.push({
+                      pathname: "/",
+                      state: {
+                        needsRefresh: true,
+                      },
+                    })
+                } else if(logRes === "Invalid E-mail") {
+                    setLogInMessageBoxContent("Oops, Email seems to be new, try Signing In first.")
+                    props.authentication(false);
+                    props.getEmail("");
+                    props.getName("");
                 } else {
-                    setSignInMessageBoxContent("Oops, something went wrong. Check all details and try again.")
+                    setLogInMessageBoxContent("Oops, something went wrong. Check all details and try again.")
+                    props.authentication(false);
+                    props.getEmail("");
+                    props.getName("");
                 }
             }
-            xhttp.open("POST", "http://localhost/DBMS%20Project/SignIn.php?email="+email+"&password="+password);
+            xhttp.open("POST", "http://localhost/DBMS%20Project/login.php?email="+email+"&password="+password);
             xhttp.send();
+            
     }
 
     const Signin = () => {

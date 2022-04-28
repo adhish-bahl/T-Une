@@ -7,7 +7,8 @@ import share from "./images/share.svg";
 function NewsComponent(props) {
 
     const [like, setlike] = useState(false);
-    const [likeCount, setLikeCount] = useState(props.likes);
+    const [likeCount, setLikeCount] = useState(parseInt(props.likes));
+    // console.log(typeof(likeCount));
 
     const likeManager = () => {
         if(like) {

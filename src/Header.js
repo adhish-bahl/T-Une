@@ -11,7 +11,7 @@ import { Link, Redirect } from "react-router-dom";
 
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-function Header() {
+function Header(props) {
 
 
     // console.log(document.URL);
@@ -153,7 +153,7 @@ function Header() {
 			  {/* <li><Link to="/trending"><img className='icon' src={trending} alt="TrendingIcon" /></Link></li> */}
 			  {/* <li><Link to="/login"><img className='icon' src={account} alt="AccountIcon" onClick={loginActive}/></Link></li> */}
 		  </ul>
-		  <p className="welcomeMessage">Hello, Guest</p>
+		  <p className="welcomeMessage">Hello, {props.user}</p>
         </div>
     </div>
     </div>
