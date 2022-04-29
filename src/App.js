@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-router-dom";
 import Login from './Login';
 import Header from './Header';
 import Footer from './Footer';
@@ -17,6 +17,8 @@ function App() {
     var [auth, setAuth] = useState(false);
     var [name, setName] = useState();
     var [email, setEmail] = useState();
+    const history = useHistory();
+
     // setName(name = name.split(" "));
     // const [firstName, ...rest] = name.split(' ');
 
@@ -82,6 +84,17 @@ function App() {
 
                 <Route path="/">
                     <Header user={auth ? name : "Guest"} />
+                    
+                        {/* { if(!auth) {
+                            history.push({
+                                pathname: "/login",
+                                state: {
+                                    needsRefresh: true,
+                                },
+                            })
+                        } } */}
+
+                    {/* {auth && HomePage()} */}
                     <HomePage />
                     <Footer />
                 </Route>

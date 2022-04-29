@@ -30,6 +30,12 @@ function Login(props) {
     const [data, setData] = useState([]);
     const history = useHistory();
 
+    // var nameExpression = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/; 
+    var nameExpression = /^[a-zA-Z]+ [a-zA-Z]+$/; 
+    var emailExpression = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; 
+    var passwordExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    var numberExpression = /^[6-9]\d{9}$/;
+
     // const login = e =>{
     //     console.log(email + pwd);
     //     e.prevDefault();
@@ -59,6 +65,47 @@ function Login(props) {
             xhttp.send();
     }
 
+    const checkName = () => {
+        if(!nameExpression.test(name)) {
+            setSignInMessageBoxContent("Incorrect Name Input");
+        } else {
+            setSignInMessageBoxContent("");
+        }
+    }
+
+    const checkEmail = () => {
+        if(!emailExpression.test(email1)) {
+            setSignInMessageBoxContent("Incorrect Email Input");
+        } else {
+            setSignInMessageBoxContent("");
+        }
+    }
+
+    const checkPassword1 = () => {
+        if(!passwordExpression.test(pwd1)) {
+            setSignInMessageBoxContent("Incorrect Password Input");
+        } else {
+            setSignInMessageBoxContent("");
+        }
+    }
+
+    const checkPassword2 = () => {
+        if(!passwordExpression.test(pwd2)) {
+            setSignInMessageBoxContent("Incorrect Password Input");
+        } else {
+            setSignInMessageBoxContent("");
+        }
+    }
+
+    const checkPhone = () => {
+        if(!numberExpression.test(number)) {
+            setSignInMessageBoxContent("Incorrect phone number Input");
+        } else {
+            setSignInMessageBoxContent("");
+        }
+
+    }
+
 
     const handleSignIn = (e) => {
         e.preventDefault();
@@ -83,14 +130,14 @@ function Login(props) {
         //     fetchData();
         // }, []);
 
-        var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+        
 
         if(pwd1 === pwd2) {
             if(pwd1.length < 8)
             {
                 setSignInMessageBoxContent("Password  must be atleast 8 characters.")
             } else {
-                if(!regularExpression.test(pwd1))
+                if(!passwordExpression.test(pwd1))
                 {
                     setSignInMessageBoxContent("Password must have atleast one number and special character.")
                 } else {
@@ -155,25 +202,25 @@ function Login(props) {
                             <form onSubmit={handleSignIn}>
                             <label htmlFor='nameInput' className="nameLabel">Name</label>
                             {/* <input type="text" name="nameLabel" id="nameInput" onChange={e => setName(e.target.value)} value={name} /> */}
-                            <input type="text" name="nameLabel" id="nameInput" required onChange={e => setName(e.target.value)} defaultValue="" />
+                            <input type="text" name="nameLabel" id="nameInput" required onChange={e => {setName(e.target.value)}} onBlur={checkName} />
                             <label htmlFor='emailInput' className="emailLabel">E-mail id</label>
-                            <input type="email" name="emailLabel" id="emailInput" required onChange={e => setEmail1(e.target.value)} />
+                            <input type="email" name="emailLabel" id="emailInput" required onChange={e => setEmail1(e.target.value)} onBlur={checkEmail} />
                             {/* <input type="email" name="emailLabel" id="emailInput" onChange={e => setEmail1(e.target.value)} value={email1} /> */}
                             <label htmlFor='password1Input' className="password1Label">Password</label>
                             {/* <input type="password" name="password1Label" id="password1Input" required onChange={e => setPwd1(e.target.value)}  /> */}
                             <div className="pwdContainer">
-                                <input required name="password1Label" id='password1Input' type={isRevealPwd ? "text" : "password"} onChange={(e) => setPwd1(e.target.value)} />
+                                <input required name="password1Label" id='password1Input' type={isRevealPwd ? "text" : "password"} onChange={(e) => setPwd1(e.target.value)} onBlur={checkPassword1}/>
                                 <img alt="showPassword"  className='pwd-toggle' title={isRevealPwd ? "Hide password" : "Show password"} src={isRevealPwd ? showPassword : hidePassword} onClick={() => setIsRevealPwd(prevState => !prevState)} />
                             </div>
                             {/* <input type="password" name="password1Label" id="password1Input" onChange={e => setPwd1(e.target.value)} value={pwd1} /> */}
                             <label htmlFor='password2Input' className="password2Label">Re-enter your password</label>
-                            <input type="password" name="password2Label" id="password2Input" required onChange={e => setPwd2(e.target.value)}  />
+                            <input type="password" name="password2Label" id="password2Input" required onChange={e => setPwd2(e.target.value)} onBlur={checkPassword2} />
                             {/* <input type="password" name="password2Label" id="password2Input" onChange={e => setPwd2(e.target.value)} value={pwd2} /> */}
                             <label htmlFor='dobInput' className="dobLabel">Date of Birth</label>
                             <input type="date" name="dobLabel" id="dobInput" required onChange={e => setDob(e.target.value)}  />
                             {/* <input type="date" name="dobLabel" id="dobInput" onChange={e => setDob(e.target.value)} value={dob} /> */}
                             <label htmlFor='numberInput' className="numberLabel">Phone Number</label>
-                            <input type="tel" name="numberLabel" id="numberInput" required onChange={e => setNumber(e.target.value)}  />
+                            <input type="tel" name="numberLabel" id="numberInput" required onChange={e => setNumber(e.target.value)} onBlur={checkPhone} />
                             {/* <input type="tel" name="numberLabel" id="numberInput" onChange={e => setNumber(e.target.value)} value={number} /> */}
                             <button id='signinButton' type="submit">Sign In</button>
                             </form>

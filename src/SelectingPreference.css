@@ -18,13 +18,13 @@
     height: 95vh;
 }
 
-input, label {
+.SPContainer input, .SPContainer label {
     font-size: 1.5rem;
     font-weight: 400;
     color: rgb(244,196,74);
 }
 
-input {
+.SPContainer input {
     transform: scale(1.6);
     margin-right: 7px;
 }
@@ -36,14 +36,14 @@ input {
     /* height:fit-content; */
 }
 
-form span {
+.SPContainer form span {
     background-color: rgba(39, 35, 30, 0.5);
     border-radius: 10px;
     margin: 0px 15px;
     padding: 10px;
 }
 
-button {
+.SPContainer button {
     position: relative;
     bottom: -40px;
     background-color: rgba(39, 35, 30, 0.5);
