@@ -56,7 +56,6 @@ function Login(props) {
                     setSignInMessageBoxContent("Oops, something went wrong. Check all details and try again.")
                 }
             }
-            xhttp.open("POST", "http://localhost/DBMS%20Project/SignIn.php?fname="+name+"&password="+pwd1+"&dob="+dob+"&phno="+number+"&email="+email1+"&age="+age);
             xhttp.send();
     }
 
@@ -70,6 +69,19 @@ function Login(props) {
         // .then(res => {
         //     console.log(res);
         // })
+
+
+        // useEffect(() => {
+        //     async function fetchData() {
+        //         const request = await axiosbaseurl.post(`SignIn.php?fname=`+name+"&password="+pwd1+"&dob="+dob+"&phno="+number)
+        //         .then(({data}) => {
+        //             console.log(data);
+        //         })
+        //         // setData(request.data);
+        //         // return request;
+        //     }
+        //     fetchData();
+        // }, []);
 
         var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
@@ -90,12 +102,10 @@ function Login(props) {
         }
     }
 
-    const handleLogIn = (e) => {
-
-        e.preventDefault();
-
+    function checkLogin() {
         const xhttp = new XMLHttpRequest();
-            xhttp.onload = function() {
+
+            xhttp.onload = function(e) {
                 const incomingData = JSON.parse(this.responseText)
                 setLogRes(incomingData.result);
                 console.log(logRes);
@@ -125,7 +135,12 @@ function Login(props) {
             }
             xhttp.open("POST", "http://localhost/DBMS%20Project/login.php?email="+email+"&password="+password);
             xhttp.send();
-            
+    }
+
+    const handleLogIn = (e) => {
+
+        e.preventDefault();
+        checkLogin();
     }
 
     const Signin = () => {

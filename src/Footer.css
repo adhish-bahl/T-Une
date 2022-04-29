@@ -10,3 +10,35 @@
     margin: 15px 25vw;
     /* background-color: blue; */
 }
+
+.sec {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.sec p {
+    margin: 2px;
+    margin-right: 10px;
+}
+
+.Link {
+    color: white;
+    text-decoration: none;
+    /* padding-left: 10px; */
+    font-weight: lighter;
+}
+
+.Link {
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 #000000;
+    color: white;
+    margin: 0 -.25rem;
+    padding: 0 .25rem;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+.Link:hover {
+    box-shadow: inset 100px 0 0 0 #000000;
+  color: white;
+}

@@ -13,12 +13,15 @@ import Team from './Team';
 
 function App() {
 
-    const [auth, setAuth] = useState(false);
-    const [name, setName] = useState();
-    const [email, setEmail] = useState();
+    var [auth, setAuth] = useState(false);
+    var [name, setName] = useState();
+    var [email, setEmail] = useState();
+    // setName(name = name.split(" "));
+    // const [firstName, ...rest] = name.split(' ');
 
     const pull_name = (data) => {
-        setName(data);
+        const [firstName, ...rest] = data.split(' ');
+        setName(firstName);
     }
     const pull_email = (data) => {
         setEmail(data);
@@ -26,9 +29,6 @@ function App() {
     const pull_auth = (data) => {
         setAuth(data);
     }
-
-    // console.log(auth);
-    // console.log(email);
 
   return (
     <Router>
@@ -76,7 +76,6 @@ function App() {
                 <Route path="/">
                     <Header user={auth ? name : "Guest"} />
                     <HomePage />
-                    {/* <h1>This is react App</h1> */}
                     <Footer />
                 </Route>
 
