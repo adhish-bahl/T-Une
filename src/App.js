@@ -10,6 +10,7 @@ import FeedbackPage from './FeedbackPage';
 import ExplorePage from './ExplorePage';
 import Trending from './Trending'
 import Team from './Team';
+import SelectingPreference from './SelectingPreference';
 
 function App() {
 
@@ -35,9 +36,15 @@ function App() {
         <div className="App">
             <Switch>
                 <Route path="/ourteam">
-                    <Header user={auth ? name : "Guest"} />
+                    <Header  user={auth ? name : "Guest"} auth={auth}/>
                     <Team />
                     <Footer />
+                </Route>
+
+                <Route path="/selectpreference">
+                    {/* <Header  user={auth ? name : "Guest"} auth={auth}/> */}
+                    <SelectingPreference />
+                    {/* <Footer /> */}
                 </Route>
 
                 <Route path="/trending">

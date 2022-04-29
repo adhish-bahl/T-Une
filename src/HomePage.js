@@ -17,6 +17,26 @@ function HomePage() {
   //   });
   // }, []);
 
+//   (function(){
+//   var grid;
+//   function init() {
+//     grid = new Minigrid({
+//       container: '.homeContainer',
+//       item: '.newsContainer',
+//       gutter: 12
+//     });
+//     grid.mount();
+//   }
+  
+//   // mount
+//   function update() {
+//     grid.mount();
+//   }
+
+//   document.addEventListener('DOMContentLoaded', init);
+//   window.addEventListener('resize', update);
+// })();
+
   useEffect(() => {
     async function fetchData() {
       const request = await axiosbaseurl.get("Posts.php");

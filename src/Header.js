@@ -11,7 +11,7 @@ import { Link, Redirect } from "react-router-dom";
 
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-function Header(props) {
+function Header({auth, user}) {
 
 
     // console.log(document.URL);
@@ -24,6 +24,13 @@ function Header(props) {
   const [storeActive, setStoreActive] = useState(false);
   const [quizActive, setQuizActive] = useState(false);
   const [trendingActive, setTrendingActive] = useState(false);
+  var [logoutStatus, setLogoutStatus] = useState(auth);
+
+  console.log(auth);
+  // setLogoutStatus(logoutStatus = auth)
+  const styling = {
+    display: logoutStatus ? "absolute" : "hidden"
+  }
 
 //   Router.onUrlChange(url1 => {
 //     const url = document.URL.slice(document.URL.lastIndexOf("/")+1, document.URL.length);
@@ -72,6 +79,10 @@ function Header(props) {
   //     setTrendingActive(trendingActive => !trendingActive);
   //   }
   // }
+
+  const handleLogout = () => {
+
+  }
 
   const handleHome = () => {
     <Redirect to="/" />
@@ -139,21 +150,22 @@ function Header(props) {
         </div>
         <div className="right">
           <ul>
-			  {/* <li><Link to="/home"><img className={` ${homeActive ? 'icon active' : 'icon'}`}  src={home} alt="HomeIcon" /></Link></li>
-			  <li><Link to="/explore"><img className={` ${exploreActive ? 'icon active' : 'icon'}`} src={explore} alt="ExploreIcon" /></Link></li>
-			  <li><Link to="/store"><img className={` ${storeActive ? 'icon active' : 'icon'}`} src={store} alt="StoreIcon" /></Link></li>
-			  <li><Link to="/quiz"><img className={` ${quizActive ? 'icon quizIcon active' : 'icon quizIcon'}`}  src={quiz} alt="QuizIcon" /></Link></li>
-			  <li><Link to="/trending"><img className={` ${trendingActive ? 'icon active' : 'icon'}`}  src={trending} alt="TrendingIcon" /></Link></li> */}
-			  <li><Link to="/home"><img className={` ${homeActive ? 'icon active' : 'icon'}`} onClick={handleHome} src={home} alt="HomeIcon" /></Link></li>
-			  <li><Link to="/explore"><img className={` ${exploreActive ? 'icon active' : 'icon'}`} onClick={handleExplore} src={explore} alt="ExploreIcon" /></Link></li>
-			  <li><Link to="/store"><img className={` ${storeActive ? 'icon active' : 'icon'}`} onClick={handleStore} src={store} alt="StoreIcon" /></Link></li>
-			  <li><Link to="/quiz"><img className={` ${quizActive ? 'icon quizIcon active' : 'icon quizIcon'}`} onClick={handleQuiz} src={quiz} alt="QuizIcon" /></Link></li>
-			  <li><Link to="/trending"><img className={` ${trendingActive ? 'icon active' : 'icon'}`} onClick={handleTrending} src={trending} alt="TrendingIcon" /></Link></li>
-			  <li><Link to="/login"><img className='icon' src={account} alt="AccountIcon"/></Link></li>
-			  {/* <li><Link to="/trending"><img className='icon' src={trending} alt="TrendingIcon" /></Link></li> */}
-			  {/* <li><Link to="/login"><img className='icon' src={account} alt="AccountIcon" onClick={loginActive}/></Link></li> */}
-		  </ul>
-		  <p className="welcomeMessage">Hello, {props.user}</p>
+            {/* <li><Link to="/home"><img className={` ${homeActive ? 'icon active' : 'icon'}`}  src={home} alt="HomeIcon" /></Link></li>
+            <li><Link to="/explore"><img className={` ${exploreActive ? 'icon active' : 'icon'}`} src={explore} alt="ExploreIcon" /></Link></li>
+            <li><Link to="/store"><img className={` ${storeActive ? 'icon active' : 'icon'}`} src={store} alt="StoreIcon" /></Link></li>
+            <li><Link to="/quiz"><img className={` ${quizActive ? 'icon quizIcon active' : 'icon quizIcon'}`}  src={quiz} alt="QuizIcon" /></Link></li>
+            <li><Link to="/trending"><img className={` ${trendingActive ? 'icon active' : 'icon'}`}  src={trending} alt="TrendingIcon" /></Link></li> */}
+            <li><Link to="/home"><img className={` ${homeActive ? 'icon active' : 'icon'}`} onClick={handleHome} src={home} alt="HomeIcon" /></Link></li>
+            <li><Link to="/explore"><img className={` ${exploreActive ? 'icon active' : 'icon'}`} onClick={handleExplore} src={explore} alt="ExploreIcon" /></Link></li>
+            <li><Link to="/store"><img className={` ${storeActive ? 'icon active' : 'icon'}`} onClick={handleStore} src={store} alt="StoreIcon" /></Link></li>
+            <li><Link to="/quiz"><img className={` ${quizActive ? 'icon quizIcon active' : 'icon quizIcon'}`} onClick={handleQuiz} src={quiz} alt="QuizIcon" /></Link></li>
+            <li><Link to="/trending"><img className={` ${trendingActive ? 'icon active' : 'icon'}`} onClick={handleTrending} src={trending} alt="TrendingIcon" /></Link></li>
+            <li><Link to="/login"><img className='icon' src={account} alt="AccountIcon"/></Link></li>
+            {/* <li><Link to="/trending"><img className='icon' src={trending} alt="TrendingIcon" /></Link></li> */}
+            {/* <li><Link to="/login"><img className='icon' src={account} alt="AccountIcon" onClick={loginActive}/></Link></li> */}
+		      </ul>
+		      <p className="welcomeMessage">Hello, {user}</p>
+            <p className="logoutBtn" onClick={handleLogout} style={styling}>Logout</p>
         </div>
     </div>
     </div>

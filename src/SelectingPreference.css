@@ -1,0 +1,54 @@
+.SPContainer::before {
+    content: "";
+    background: url('./images/backgroundLogin.png') no-repeat center center/cover;
+    opacity: 0.89;
+    z-index: -51;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.SPContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+}
+
+input, label {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: rgb(244,196,74);
+}
+
+input {
+    transform: scale(1.6);
+    margin-right: 7px;
+}
+
+.bigBox {
+    padding: 50px;
+    border-radius: 20px;
+    background-color: rgba(250, 235, 215, 0.305);
+    /* height:fit-content; */
+}
+
+form span {
+    background-color: rgba(39, 35, 30, 0.5);
+    border-radius: 10px;
+    margin: 0px 15px;
+    padding: 10px;
+}
+
+button {
+    position: relative;
+    bottom: -40px;
+    background-color: rgba(39, 35, 30, 0.5);
+    right: 10px;
+    color: rgb(244,196,74);
+    font-size: 1.3rem;
+    border-radius: 10px;
+}
