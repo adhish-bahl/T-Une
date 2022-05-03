@@ -1,11 +1,13 @@
-import React, {useState} from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, {useState, useContext} from 'react';
+import { Link, useHistory, Redirect } from 'react-router-dom';
 import logo from "./images/tune.jpg";
 import "./Login.css";
 import "./Signin.css"
 import showPassword from "./images/show-password.svg";
 import hidePassword from "./images/hide-password.svg";
-import axiosbaseurl from "./axiosbaseurl";
+// import axiosbaseurl from "./axiosbaseurl";
+// import SelectingPreference from './SelectingPreference';
+// import { UserContext } from './Interface';
 
 function Login(props) {
 
@@ -18,8 +20,8 @@ function Login(props) {
     const [pwd2, setPwd2] = useState();
     const [dob, setDob] = useState();
     const [number, setNumber] = useState();
-    const [signRes, setSignRes] = useState("Success");
-    const [logRes, setLogRes] = useState();
+    var [signRes, setSignRes] = useState("Success");
+    var [logRes, setLogRes] = useState("");
 
     const [email, setEmail] = useState();
     const [password, setPwd] = useState();
@@ -29,6 +31,7 @@ function Login(props) {
     
     const [data, setData] = useState([]);
     const history = useHistory();
+    // const { _, dispatch } = useContext(UserContext);
 
     // var nameExpression = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/; 
     var nameExpression = /^[a-zA-Z]+ [a-zA-Z]+$/; 
@@ -48,20 +51,35 @@ function Login(props) {
     const makeSignInRequest = () => {
         var currentTime = new Date();
         const age = (currentTime.getFullYear() - parseInt(dob.substring(0, 4))); 
+
          const xhttp = new XMLHttpRequest();
             xhttp.onload = function() {
                 console.log(this.responseText);
-                setSignRes(this.responseText);
+                setSignRes(signRes =  this.responseText);
                 if(signRes === "Success") {
-                    setSignInMessageBoxContent("Account created successfully! Please log-in");
+                    setSignInMessageBoxContent("Account created successfully! Please Wait...");
                     setTimeout(function() {
-                        toggleModal();
                         setSignInMessageBoxContent("");
+                        // toggleModal();
+                        // <Redirect to="/selectpreference" />
+
+                        history.push({
+                        pathname: "/selectpreference",
+                        state: {
+                            needsRefresh: true,
+                        },
+                        })
+                    
+
+                        // <SelectingPreference />
                     }, 3000);
+
+
                 } else {
-                    setSignInMessageBoxContent("Oops, something went wrong. Check all details and try again.")
+                    setSignInMessageBoxContent("Oops, something went wrong. Check all details and try again.");
                 }
             }
+            xhttp.open("POST", "http://localhost/DBMS%20Project/SignIn.php?fname="+name+"&password="+pwd1+"&dob="+dob+"&phno="+number+"&email="+email1+"&age="+age);
             xhttp.send();
     }
 
@@ -151,37 +169,39 @@ function Login(props) {
 
     function checkLogin() {
         const xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "http://localhost/DBMS%20Project/login.php?email="+email+"&password="+password, false);
 
-            xhttp.onload = function(e) {
-                const incomingData = JSON.parse(this.responseText)
-                setLogRes(incomingData.result);
-                console.log(logRes);
-                // console.log(incomingData.result);
-                if(logRes === "Login Succesful") {
-                    setLogInMessageBoxContent("Logged In Sucessfully!");
-                    props.authentication(true);
-                    props.getEmail(incomingData.email);
-                    props.getName(incomingData.name);
-                    history.push({
-                      pathname: "/",
-                      state: {
-                        needsRefresh: true,
-                      },
-                    })
-                } else if(logRes === "Invalid E-mail") {
-                    setLogInMessageBoxContent("Oops, Email seems to be new, try Signing In first.")
-                    props.authentication(false);
-                    props.getEmail("");
-                    props.getName("");
-                } else {
-                    setLogInMessageBoxContent("Oops, something went wrong. Check all details and try again.")
-                    props.authentication(false);
-                    props.getEmail("");
-                    props.getName("");
-                }
+        xhttp.onload = function(e) {
+            const incomingData = JSON.parse(this.responseText);
+            setLogRes(logRes = incomingData.result);
+            console.log(logRes);
+            if(logRes === "Login Succesful") {
+                setLogInMessageBoxContent("Logged In Sucessfully!");
+                props.authentication(true);
+                props.getEmail(incomingData.email);
+                props.getName(incomingData.name);
+                localStorage.setItem("user",incomingData.name);
+                // localStorage.setItem("user",JSON.stringify(incomingData.name));
+                // dispatch({type: "USER", payload: incomingData.email });
+                history.push({
+                  pathname: "/",
+                  state: {
+                    needsRefresh: true,
+                  },
+                })
+            } else if(logRes === "Invalid E-mail") {
+                setLogInMessageBoxContent("Oops, Email seems to be new, try Signing In first.")
+                props.authentication(false);
+                props.getEmail("");
+                props.getName("");
+            } else {
+                setLogInMessageBoxContent("Oops, something went wrong. Check all details and try again.")
+                props.authentication(false);
+                props.getEmail("");
+                props.getName("");
             }
-            xhttp.open("POST", "http://localhost/DBMS%20Project/login.php?email="+email+"&password="+password);
-            xhttp.send();
+        }
+        xhttp.send();
     }
 
     const handleLogIn = (e) => {

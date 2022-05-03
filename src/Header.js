@@ -19,14 +19,14 @@ function Header({auth, user}) {
     // console.log(url);
     
 
-  const [homeActive, setHomeActive] = useState(true);
-  const [exploreActive, setExploreActive] = useState(false);
+  const [homeActive, setHomeActive] = useState(false);
+  const [exploreActive, setExploreActive] = useState(true);
   const [storeActive, setStoreActive] = useState(false);
   const [quizActive, setQuizActive] = useState(false);
   const [trendingActive, setTrendingActive] = useState(false);
   var [logoutStatus, setLogoutStatus] = useState(auth);
 
-  console.log(auth);
+  // console.log(auth);
   // setLogoutStatus(logoutStatus = auth)
   const styling = {
     display: logoutStatus ? "absolute" : "hidden"
