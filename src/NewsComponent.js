@@ -1,8 +1,9 @@
-import React, {useState } from 'react';
+import React, {useState, useEffect } from 'react';
 import "./NewsComponent.css";
 import likeIcon from "./images/like.svg";
 import likedIcon from "./images/liked.svg";
 import share from "./images/share.svg";
+import axiosbaseurl from "./axiosbaseurl"
 
 function NewsComponent(props) {
 
@@ -10,18 +11,28 @@ function NewsComponent(props) {
     const [likeCount, setLikeCount] = useState(parseInt(props.likes));
     // console.log(typeof(likeCount));
 
-    const likeManager = () => {
+    const LikeManager = () => {
         if(like) {
             setlike(!like);
             setLikeCount(likeCount - 1);
+
+            const xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "http://localhost/DBMS%20Project/unlike.php?postid="+props.id+"&userid=" + props.userId, false);
+
+            xhttp.onload = function(e) {}
+            xhttp.send();
         }
         else if (!like) {
             setlike(!like);
             setLikeCount(likeCount + 1);
+
+            const xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "http://localhost/DBMS%20Project/like.php?postid="+props.id+"&userid=" + props.userId, false);
+
+            xhttp.onload = function(e) {}
+            xhttp.send();
         }
     }
-
-    // console.log(props.auth);
 
     const likeStyling = {
         display: props.auth ? "inline" : "none",
@@ -49,10 +60,10 @@ function NewsComponent(props) {
             </div>
             <div className="newsLower">
                 <span>
-                    <span style={likeStyling} className="likeButton" className="likeIcon"><img src={like ? likedIcon : likeIcon} alt="like" onClick={likeManager}/></span>
+                    <span style={likeStyling} className="likeButton" className="likeIcon"><img src={like ? likedIcon : likeIcon} alt="like" onClick={LikeManager}/></span>
                     <span className='likeCount'>
                         <p className="ḷikeLabel" style={likeStylingOpp}>
-                            Likes: 
+                            <img src={likedIcon} alt="like" className='likedLogout'/>
                         </p> 
                         {likeCount}
                     </span>

@@ -3,7 +3,7 @@ import NewsComponent from './NewsComponent';
 import "./ExplorePage.css";
 import axiosbaseurl from './axiosbaseurl';
 
-function ExplorePage({auth}) {
+function ExplorePage({auth, userId}) {
 
   const [data, setData] = useState([]);
 
@@ -23,11 +23,13 @@ function ExplorePage({auth}) {
                 return (
                   <div key={post.postId}>
                     <NewsComponent
+                        id = {post.postId}
                         heading = {post.summary}
                         content = {post.content}
                         imgLink = {post.imgLink}
                         likes = {post.likes}
                         auth= {auth}
+                        userId = {userId}
                     />
 
                   </div>

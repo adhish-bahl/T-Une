@@ -175,11 +175,14 @@ function Login(props) {
             const incomingData = JSON.parse(this.responseText);
             setLogRes(logRes = incomingData.result);
             console.log(logRes);
+            console.log(incomingData);
             if(logRes === "Login Succesful") {
                 setLogInMessageBoxContent("Logged In Sucessfully!");
                 props.authentication(true);
                 props.getEmail(incomingData.email);
                 props.getName(incomingData.name);
+                props.getUserId(incomingData.userid);
+                // console.log(incomingData.userid);
                 // localStorage.setItem("user",incomingData.name);
                 // localStorage.setItem("user",JSON.stringify(incomingData.name));
                 // dispatch({type: "USER", payload: incomingData.email });

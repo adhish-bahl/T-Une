@@ -16,6 +16,7 @@ function Routing() {
 
     var [auth, setAuth] = useState(false);
     var [name, setName] = useState();
+    var [userId, setUserId] = useState();
     var [email, setEmail] = useState();
 
     
@@ -30,6 +31,9 @@ function Routing() {
     }
     const pull_email = (data) => {
         setEmail(data);
+    }
+    const pull_userId = (data) => {
+        setUserId(data);
     }
     const pull_auth = (data) => {
         setAuth(data);
@@ -77,7 +81,7 @@ function Routing() {
                     
                     <Route exact path="/explore">
                         <Header user={auth ? name : "Guest"} auth={auth} />
-                        <ExplorePage auth={auth} />
+                        <ExplorePage auth={auth} userId={userId} />
                         <Footer />
                     </Route>
 
@@ -88,14 +92,14 @@ function Routing() {
                     </Route>
 
                     <Route path="/login">
-                        <Login authentication={pull_auth} getEmail={pull_email}  getName={pull_name} />
+                        <Login authentication={pull_auth} getEmail={pull_email}  getName={pull_name} getUserId={pull_userId} />
                     </Route>
 
                     <Route path="/">
                         <Header user={auth ? name : "Guest"} auth={auth} />
 
                         {/* {auth ? <HomePage /> : history.push("/login")} */}
-                        {auth ? <HomePage auth={auth} /> : <Redirect to="/login" />}
+                        {auth ? <HomePage auth={auth} userId={userId} /> : <Redirect to="/login" />}
 
                         {/* {if (auth) {
                             <HomePage />

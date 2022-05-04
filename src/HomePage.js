@@ -3,7 +3,8 @@ import "./HomePage.css";
 import NewsComponent from './NewsComponent';
 import axiosbaseurl from './axiosbaseurl';
 
-function HomePage({auth}) {
+function HomePage({auth, userId}) {
+  // console.log(userId);
   
   const [data, setData] = useState([]);
 
@@ -86,11 +87,13 @@ function HomePage({auth}) {
                 return (
                   <div key={post.postId}>
                     <NewsComponent
+                        id = {post.postId}
                         heading = {post.summary}
                         content = {post.content}
                         imgLink = {post.imgLink}
                         likes = {post.likes}
                         auth = {auth}
+                        userId = {auth ? userId : "001"}
                     />
                   </div>
                 );

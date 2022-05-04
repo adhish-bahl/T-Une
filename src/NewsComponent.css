@@ -4,6 +4,7 @@
     border: 1px solid black;
     margin: 30px;
     padding-right: 10px;
+    min-height: 290px;
     height: fit-content;
     border-radius: 20px;
     box-sizing: border-box;
@@ -82,4 +83,9 @@ span {
     bottom: 5px;
     font-size: 1.4rem;
     left: 5px;
+}
+
+.likedLogout {
+    position: relative;
+    bottom: -3px;
 }
