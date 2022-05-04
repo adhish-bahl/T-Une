@@ -47,7 +47,7 @@ function Routing() {
             <div className="App">
                 <Switch>
                     <Route exact path="/ourteam">
-                        <Header  user={auth ? name : "Guest"} auth={auth}/>
+                        <Header  user={auth ? name : "Guest"} auth={auth} authentication={pull_auth}/>
                         <Team />
                         <Footer />
                     </Route>
@@ -59,30 +59,30 @@ function Routing() {
                     </Route>
 
                     <Route exact  path="/trending">
-                        <Header user={auth ? name : "Guest"} />
+                        <Header user={auth ? name : "Guest"} auth={auth} />
                         <Trending />
                         <Footer />
                     </Route>
 
                     <Route exact path="/feedback">
-                        <Header user={auth ? name : "Guest"} />
+                        <Header user={auth ? name : "Guest"} auth={auth} />
                         <FeedbackPage />
                         <Footer />
                     </Route>
 
                     <Route exact path="/quiz">
-                        <Header user={auth ? name : "Guest"} />
+                        <Header user={auth ? name : "Guest"} auth={auth} />
                         <Footer />
                     </Route>
                     
                     <Route exact path="/explore">
-                        <Header user={auth ? name : "Guest"} />
-                        <ExplorePage />
+                        <Header user={auth ? name : "Guest"} auth={auth} />
+                        <ExplorePage auth={auth} />
                         <Footer />
                     </Route>
 
                     <Route exact path="/store">
-                        <Header user={auth ? name : "Guest"} />
+                        <Header user={auth ? name : "Guest"} auth={auth} />
                         <Store />
                         <Footer />
                     </Route>
@@ -92,10 +92,10 @@ function Routing() {
                     </Route>
 
                     <Route path="/">
-                        <Header user={auth ? name : "Guest"} />
+                        <Header user={auth ? name : "Guest"} auth={auth} />
 
                         {/* {auth ? <HomePage /> : history.push("/login")} */}
-                        {auth ? <HomePage /> : <Redirect to="/login" />}
+                        {auth ? <HomePage auth={auth} /> : <Redirect to="/login" />}
 
                         {/* {if (auth) {
                             <HomePage />

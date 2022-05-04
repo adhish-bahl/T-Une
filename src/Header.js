@@ -11,7 +11,7 @@ import { Link, Redirect } from "react-router-dom";
 
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-function Header({auth, user}) {
+function Header(props) {
 
 
     // console.log(document.URL);
@@ -24,13 +24,21 @@ function Header({auth, user}) {
   const [storeActive, setStoreActive] = useState(false);
   const [quizActive, setQuizActive] = useState(false);
   const [trendingActive, setTrendingActive] = useState(false);
-  var [logoutStatus, setLogoutStatus] = useState(auth);
+  var [logoutStatus, setLogoutStatus] = useState(props.auth);
 
   // console.log(auth);
   // setLogoutStatus(logoutStatus = auth)
   const styling = {
     display: logoutStatus ? "absolute" : "hidden"
   }
+
+  const loginStyle = {
+    display: props.auth ? "none" : "inline",
+  }
+  const loginStyleOpp = {
+    display: props.auth ? "inline" : "none",
+  }
+  // console.log(props.auth);
 
 //   Router.onUrlChange(url1 => {
 //     const url = document.URL.slice(document.URL.lastIndexOf("/")+1, document.URL.length);
@@ -81,7 +89,8 @@ function Header({auth, user}) {
   // }
 
   const handleLogout = () => {
-
+    // props.authentication(false);
+    window.location.reload();
   }
 
   const handleHome = () => {
@@ -160,11 +169,12 @@ function Header({auth, user}) {
             <li><Link to="/store"><img className={` ${storeActive ? 'icon active' : 'icon'}`} onClick={handleStore} src={store} alt="StoreIcon" /></Link></li>
             <li><Link to="/quiz"><img className={` ${quizActive ? 'icon quizIcon active' : 'icon quizIcon'}`} onClick={handleQuiz} src={quiz} alt="QuizIcon" /></Link></li>
             <li><Link to="/trending"><img className={` ${trendingActive ? 'icon active' : 'icon'}`} onClick={handleTrending} src={trending} alt="TrendingIcon" /></Link></li>
-            <li><Link to="/login"><img className='icon' src={account} alt="AccountIcon"/></Link></li>
+            <li style={loginStyle}><Link to="/login"><img className='icon' src={account} alt="AccountIcon"/></Link></li>
+            <li style={loginStyleOpp}><img className='icon' src={account} alt="AccountIcon"/></li>
             {/* <li><Link to="/trending"><img className='icon' src={trending} alt="TrendingIcon" /></Link></li> */}
             {/* <li><Link to="/login"><img className='icon' src={account} alt="AccountIcon" onClick={loginActive}/></Link></li> */}
 		      </ul>
-		      <p className="welcomeMessage">Hello, {user}</p>
+		      <p className="welcomeMessage">Hello, {props.user}</p>
             <p className="logoutBtn" onClick={handleLogout} style={styling}>Logout</p>
         </div>
     </div>

@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react'
-import NewsComponent from './NewsComponent'
-import "./ExplorePage.css"
+import React, {useState, useEffect} from 'react';
+import NewsComponent from './NewsComponent';
+import "./ExplorePage.css";
 import axiosbaseurl from './axiosbaseurl';
 
-function ExplorePage() {
+function ExplorePage({auth}) {
 
   const [data, setData] = useState([]);
 
@@ -27,7 +27,9 @@ function ExplorePage() {
                         content = {post.content}
                         imgLink = {post.imgLink}
                         likes = {post.likes}
+                        auth= {auth}
                     />
+
                   </div>
                 );
               })

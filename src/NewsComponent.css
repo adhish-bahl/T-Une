@@ -76,3 +76,10 @@ span {
     justify-content: center;
     align-items: center; */
 }
+
+.likeCount {   
+    position: relative;
+    bottom: 5px;
+    font-size: 1.4rem;
+    left: 5px;
+}

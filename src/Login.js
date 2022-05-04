@@ -180,7 +180,7 @@ function Login(props) {
                 props.authentication(true);
                 props.getEmail(incomingData.email);
                 props.getName(incomingData.name);
-                localStorage.setItem("user",incomingData.name);
+                // localStorage.setItem("user",incomingData.name);
                 // localStorage.setItem("user",JSON.stringify(incomingData.name));
                 // dispatch({type: "USER", payload: incomingData.email });
                 history.push({
@@ -254,7 +254,7 @@ function Login(props) {
     return (
         <div className='container'>
             <div className="innerBox">
-                <Link to="/">
+                <Link to="/explore">
                     <img src={logo} alt="logo" className='logo'/>
                 </Link>
                 <h1>Login</h1>  

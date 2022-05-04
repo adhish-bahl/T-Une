@@ -3,7 +3,7 @@ import "./HomePage.css";
 import NewsComponent from './NewsComponent';
 import axiosbaseurl from './axiosbaseurl';
 
-function HomePage() {
+function HomePage({auth}) {
   
   const [data, setData] = useState([]);
 
@@ -90,6 +90,7 @@ function HomePage() {
                         content = {post.content}
                         imgLink = {post.imgLink}
                         likes = {post.likes}
+                        auth = {auth}
                     />
                   </div>
                 );
