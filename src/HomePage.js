@@ -38,10 +38,23 @@ function HomePage({auth, userId}) {
 //   window.addEventListener('resize', update);
 // })();
 
+
+  const xhttp = new XMLHttpRequest();
+  var incomingData;
+  xhttp.open("POST", "http://localhost/DBMS%20Project/Like2.php?userid="+ userId, false);
+  xhttp.onload = function(e) {
+    incomingData = JSON.parse(this.responseText);
+    // const incomingData = this.responseText;
+    console.log(typeof(incomingData));
+    console.log(incomingData);
+  }
+  xhttp.send();
+
   useEffect(() => {
     async function fetchData() {
       const request = await axiosbaseurl.get("Posts.php");
       setData(request.data);
+      console.table(request.data);
       return request;
     }
     fetchData();
@@ -84,6 +97,7 @@ function HomePage({auth, userId}) {
 
         {
           data.map(post => {
+            // console.log("hello");
                 return (
                   <div key={post.postId}>
                     <NewsComponent
@@ -94,6 +108,7 @@ function HomePage({auth, userId}) {
                         likes = {post.likes}
                         auth = {auth}
                         userId = {auth ? userId : "001"}
+                        likedPosts = {incomingData}
                     />
                   </div>
                 );

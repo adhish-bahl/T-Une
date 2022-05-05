@@ -5,15 +5,75 @@ import likedIcon from "./images/liked.svg";
 import share from "./images/share.svg";
 import axiosbaseurl from "./axiosbaseurl"
 
-function NewsComponent(props) {
 
-    const [like, setlike] = useState(false);
+function NewsComponent(props) {
+    // componentDidMount() {
+    //     props.likedPosts.map(function (data, index) {
+    //         console.log("hello2");
+    //         console.log(props.id);
+    //         console.log(props.likedPosts[index]);
+    //         if(props.likedPosts[index] == props.id) {
+    //             setlike(like = true);
+    //             console.log("match made");
+    //             return;
+    //         } else {
+    //             setlike(like = false);
+    //             console.log("match not made");
+    //         }
+    //     })
+    // }
+
+    useEffect(() => {
+        // console.log("hello - "+props.id);
+
+        // if(props.likedPosts.ind)
+
+        const size = Object.keys(props.likedPosts).length;
+
+        for(var i = 0; i < size; i++) {
+            // console.log(props.likedPosts[i]);
+            if(props.likedPosts[i] == props.id) {
+                setlike(like = true);
+                // console.log("match made");
+                break;     
+            } else {
+                setlike(like = false);
+                // console.log("match not made");
+            }
+        }
+
+        // props.likedPosts.map(function (data, index) {
+        //     console.log("hello2");
+        //     console.log(props.id);
+        //     console.log(props.likedPosts[index]);
+        //     if(props.likedPosts[index] == props.id) {
+        //         setlike(like = true);
+        //         console.log("match made");
+        //         // return (...);     
+        //     } else {
+        //         setlike(like = false);
+        //         console.log("match not made");
+        //     }
+        // })
+    }, [])
+
+    var [like, setlike] = useState(false);
     const [likeCount, setLikeCount] = useState(parseInt(props.likes));
-    // console.log(typeof(likeCount));
+    // console.table(props.likedPosts);
+
+
+    const checkStatus = () => {
+        // console.log("loaded");
+
+        
+    }
+
+    
+
 
     const LikeManager = () => {
         if(like) {
-            setlike(!like);
+            setlike(like = !like);
             setLikeCount(likeCount - 1);
 
             const xhttp = new XMLHttpRequest();
@@ -23,7 +83,7 @@ function NewsComponent(props) {
             xhttp.send();
         }
         else if (!like) {
-            setlike(!like);
+            setlike( like = !like);
             setLikeCount(likeCount + 1);
 
             const xhttp = new XMLHttpRequest();
@@ -44,6 +104,7 @@ function NewsComponent(props) {
 
     return (
         <div className='newsContainer'>
+            {/* {console.log("yoo")} */}
             <div className="newsUpper">
                 <div className="newsLeft">
                     {/* <img src={props.imgLink} alt="NewsPicture" className='newsImg' /> */}

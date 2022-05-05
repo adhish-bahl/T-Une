@@ -7,6 +7,17 @@ function ExplorePage({auth, userId}) {
 
   const [data, setData] = useState([]);
 
+  const xhttp = new XMLHttpRequest();
+  var incomingData;
+  xhttp.open("POST", "http://localhost/DBMS%20Project/Like2.php?userid="+ userId, false);
+  xhttp.onload = function(e) {
+    incomingData = JSON.parse(this.responseText);
+    // const incomingData = this.responseText;
+    console.log(typeof(incomingData));
+    console.log(incomingData);
+  }
+  xhttp.send();
+
   useEffect(() => {
     async function fetchData() {
       const request = await axiosbaseurl.get("Posts.php");
@@ -30,6 +41,7 @@ function ExplorePage({auth, userId}) {
                         likes = {post.likes}
                         auth= {auth}
                         userId = {userId}
+                        likedPosts = {incomingData}
                     />
 
                   </div>
