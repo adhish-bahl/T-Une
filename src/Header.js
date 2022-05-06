@@ -29,7 +29,7 @@ function Header(props) {
   // console.log(auth);
   // setLogoutStatus(logoutStatus = auth)
   const styling = {
-    display: logoutStatus ? "absolute" : "hidden"
+    display: logoutStatus ? "absolute" : "none"
   }
 
   const loginStyle = {
@@ -175,7 +175,7 @@ function Header(props) {
             {/* <li><Link to="/login"><img className='icon' src={account} alt="AccountIcon" onClick={loginActive}/></Link></li> */}
 		      </ul>
 		      <p className="welcomeMessage">Hello, {props.user}</p>
-            <p className="logoutBtn" onClick={handleLogout} style={styling}>Logout</p>
+            <p style={loginStyleOpp} className="logoutBtn" onClick={handleLogout} style={styling}>Logout</p>
         </div>
     </div>
     </div>
