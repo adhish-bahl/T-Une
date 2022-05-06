@@ -105,6 +105,8 @@ function NewsComponent(props) {
         display: props.auth ? "none" : "inline",
     }
 
+    const linkToCopy = props.source;
+
     return (
         <div className='newsContainer'>
             {/* {console.log("yoo")} */}
@@ -135,7 +137,7 @@ function NewsComponent(props) {
                     </span>
                 </span>
                 <span className="share">
-                    <img src={share} alt="shareIcon" onClick={copyLink} />
+                    <img src={share} alt="shareIcon" onClick={() =>  navigator.clipboard.writeText(linkToCopy)} />
                 </span>
             </div>
         </div>

@@ -70,7 +70,7 @@ function Routing() {
 
                     <Route exact path="/feedback">
                         <Header user={auth ? name : "Guest"} auth={auth} />
-                        {auth ?  <FeedbackPage /> : <Redirect to="/login" />}
+                        {auth ?  <FeedbackPage userId={userId} /> : <Redirect to="/login" />}
                         <Footer />
                     </Route>
 
