@@ -2,6 +2,15 @@ import React from 'react';
 import "./StoreComponent.css";
 
 function StoreComponent({id, item, link, desc, rate, price, img}) {
+
+    const rating =  rate;
+    const rating1 = "⭐";
+    const rating2 = "⭐⭐";
+    const rating3 = "⭐⭐⭐";
+    const rating4 = "⭐⭐⭐⭐";
+    const rating5 = "⭐⭐⭐⭐⭐";
+    // console.log(rating);
+
     return (
         
             <div className='storeContainer'>
@@ -22,7 +31,14 @@ function StoreComponent({id, item, link, desc, rate, price, img}) {
                             <p className="smallHeading"><small>T-Une Rating</small></p>
                             {/* <p className="rating">for(var i = 0; i < 5; i++) {⭐}</p> */}
                             {/* <p className="rating">while(i<rate) {⭐}</p> */}
-                            <p className="rating">⭐</p>
+                            <p className="rating">
+                                {rating == 0 ? "" : ""}
+                                {rating == 1 ? rating1 : ""}
+                                {rating == 2 ? rating2 : ""}
+                                {rating == 3 ? rating3 : ""}
+                                {rating == 4 ? rating4 : ""}
+                                {rating == 5 ? rating5 : ""}
+                            </p>
                         </p>
                     </div>
                 </div>
