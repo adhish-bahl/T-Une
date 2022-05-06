@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, } from 'react';
 import { Link, useHistory, Redirect } from 'react-router-dom';
 import logo from "./images/tune.jpg";
 import "./Login.css";
@@ -58,7 +58,9 @@ function Login(props) {
                 setSignRes(signRes =  this.responseText);
                 if(signRes === "Success") {
                     setSignInMessageBoxContent("Account created successfully! Please Wait...");
+                    props.getEmail(email1);
                     setTimeout(function() {
+
                         setSignInMessageBoxContent("");
                         // toggleModal();
                         // <Redirect to="/selectpreference" />
@@ -79,7 +81,7 @@ function Login(props) {
                     setSignInMessageBoxContent("Oops, something went wrong. Check all details and try again.");
                 }
             }
-            xhttp.open("POST", "http://localhost/DBMS%20Project/SignIn.php?fname="+name+"&password="+pwd1+"&dob="+dob+"&phno="+number+"&email="+email1+"&age="+age);
+            xhttp.open("POST", "https://t-une.000webhostapp.com/SignIn.php?fname="+name+"&password="+pwd1+"&dob="+dob+"&phno="+number+"&email="+email1+"&age="+age);
             xhttp.send();
     }
 
@@ -169,7 +171,7 @@ function Login(props) {
 
     function checkLogin() {
         const xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "http://localhost/DBMS%20Project/login.php?email="+email+"&password="+password, false);
+        xhttp.open("POST", "https://t-une.000webhostapp.com/login.php?email="+email+"&password="+password, false);
 
         xhttp.onload = function(e) {
             const incomingData = JSON.parse(this.responseText);

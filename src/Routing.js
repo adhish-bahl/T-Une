@@ -58,7 +58,7 @@ function Routing() {
 
                     <Route exact path="/selectpreference">
                         {/* <Header  user={auth ? name : "Guest"} auth={auth}/> */}
-                        <SelectingPreference />
+                        <SelectingPreference email={email} />
                         {/* <Footer /> */}
                     </Route>
 

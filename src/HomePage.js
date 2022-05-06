@@ -3,6 +3,7 @@ import "./HomePage.css";
 import NewsComponent from './NewsComponent';
 import axiosbaseurl from './axiosbaseurl';
 
+
 function HomePage({auth, userId}) {
   // console.log(userId);
   
@@ -41,7 +42,7 @@ function HomePage({auth, userId}) {
 
   const xhttp = new XMLHttpRequest();
   var incomingData;
-  xhttp.open("POST", "http://localhost/DBMS%20Project/Like2.php?userid="+ userId, false);
+  xhttp.open("POST", "https://t-une.000webhostapp.com/Like2.php?userid="+ userId, false);
   xhttp.onload = function(e) {
     incomingData = JSON.parse(this.responseText);
     // const incomingData = this.responseText;

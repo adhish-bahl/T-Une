@@ -77,7 +77,7 @@ function NewsComponent(props) {
             setLikeCount(likeCount - 1);
 
             const xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "http://localhost/DBMS%20Project/unlike.php?postid="+props.id+"&userid=" + props.userId, false);
+            xhttp.open("POST", "https://t-une.000webhostapp.com/unlike.php?postid="+props.id+"&userid=" + props.userId, false);
 
             xhttp.onload = function(e) {}
             xhttp.send();
@@ -87,7 +87,7 @@ function NewsComponent(props) {
             setLikeCount(likeCount + 1);
 
             const xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "http://localhost/DBMS%20Project/like.php?postid="+props.id+"&userid=" + props.userId, false);
+            xhttp.open("POST", "https://t-une.000webhostapp.com/like.php?postid="+props.id+"&userid=" + props.userId, false);
 
             xhttp.onload = function(e) {}
             xhttp.send();

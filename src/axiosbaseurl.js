@@ -2,7 +2,7 @@ import axios from "axios";
 
 const instance = axios.create (
     {
-        baseURL: "http://localhost/DBMS%20Project/",
+        baseURL: "https://t-une.000webhostapp.com/",
     }
 );
 
