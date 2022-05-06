@@ -79,3 +79,7 @@ a {
     text-decoration: none;
     color: black;
 }
+
+.storeHeading:hover {
+    text-decoration: underline;
+}

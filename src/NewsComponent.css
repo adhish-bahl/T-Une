@@ -89,3 +89,11 @@ span {
     position: relative;
     bottom: -3px;
 }
+
+a:hover {
+    text-decoration: underline;
+}
+
+.likeIcon:hover {
+    cursor: pointer;
+}

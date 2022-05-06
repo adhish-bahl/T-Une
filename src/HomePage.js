@@ -61,7 +61,7 @@ function HomePage({auth, userId}) {
       const incomingData = JSON.parse(this.responseText);
       // setLogRes(logRes = incomingData.result);
       // console.log(logRes);
-      // console.table(incomingData);
+      console.table(incomingData.weblink);
       setData(incomingData);
     }
     xhttp.send();
@@ -127,6 +127,7 @@ function HomePage({auth, userId}) {
                         auth = {auth}
                         userId = {auth ? userId : "001"}
                         likedPosts = {incomingData}
+                        source = {post.source}
                     />
                   </div>
                 );

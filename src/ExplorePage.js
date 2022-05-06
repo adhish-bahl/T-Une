@@ -42,6 +42,7 @@ function ExplorePage({auth, userId}) {
                         auth= {auth}
                         userId = {userId}
                         likedPosts = {incomingData}
+                        source = {post.source}
                     />
 
                   </div>

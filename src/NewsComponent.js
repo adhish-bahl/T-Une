@@ -68,6 +68,9 @@ function NewsComponent(props) {
         
     }
 
+    const copyLink = () => {
+        navigator.clipboard.writeText(props.source);
+    }
     
 
 
@@ -112,7 +115,9 @@ function NewsComponent(props) {
                 </div>
                 <div className="newsRight">
                     <p className="newsHeading">
-                        {props.heading}
+                        <a href={props.source} target="_blank">
+                            {props.heading}
+                        </a>
                     </p>
                     <p className="newsContent">
                         {props.content}
@@ -130,7 +135,7 @@ function NewsComponent(props) {
                     </span>
                 </span>
                 <span className="share">
-                    <img src={share} alt="shareIcon" />
+                    <img src={share} alt="shareIcon" onClick={copyLink} />
                 </span>
             </div>
         </div>
