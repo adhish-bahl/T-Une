@@ -107,8 +107,8 @@ function NewsComponent(props) {
             {/* {console.log("yoo")} */}
             <div className="newsUpper">
                 <div className="newsLeft">
-                    {/* <img src={props.imgLink} alt="NewsPicture" className='newsImg' /> */}
-                    <img src="https://i.pinimg.com/736x/7c/1f/c0/7c1fc0ef80848bffeaef599b414bb336.jpg" alt="NewsPicture" className='newsImg' />
+                    <img src={props.imgLink} alt="NewsPicture" className='newsImg' />
+                    {/* <img src="https://i.pinimg.com/736x/7c/1f/c0/7c1fc0ef80848bffeaef599b414bb336.jpg" alt="NewsPicture" className='newsImg' /> */}
                 </div>
                 <div className="newsRight">
                     <p className="newsHeading">

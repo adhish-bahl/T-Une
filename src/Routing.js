@@ -40,10 +40,10 @@ function Routing() {
     }
 
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("user"));
-        if (user) {
+        // const user = JSON.parse(localStorage.getItem("user"));
+        // if (user) {
             // dispatch({ type: "USER", payload: user });
-        }
+        // }
     }, []);
 
     return (
@@ -70,7 +70,7 @@ function Routing() {
 
                     <Route exact path="/feedback">
                         <Header user={auth ? name : "Guest"} auth={auth} />
-                        <FeedbackPage />
+                        {auth ?  <FeedbackPage /> : <Redirect to="/login" />}
                         <Footer />
                     </Route>
 

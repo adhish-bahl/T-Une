@@ -46,19 +46,36 @@ function HomePage({auth, userId}) {
   xhttp.onload = function(e) {
     incomingData = JSON.parse(this.responseText);
     // const incomingData = this.responseText;
-    console.log(typeof(incomingData));
-    console.log(incomingData);
+    // console.log(typeof(incomingData));
+    // console.log(incomingData);
   }
   xhttp.send();
 
   useEffect(() => {
-    async function fetchData() {
-      const request = await axiosbaseurl.get("Posts.php");
-      setData(request.data);
-      console.table(request.data);
-      return request;
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "https://t-une.000webhostapp.com/PostsWithPref.php?userid="+userId, false);
+
+    xhttp.onload = function(e) {
+      // console.table(this.responseText);
+      const incomingData = JSON.parse(this.responseText);
+      // setLogRes(logRes = incomingData.result);
+      // console.log(logRes);
+      // console.table(incomingData);
+      setData(incomingData);
     }
-    fetchData();
+    xhttp.send();
+
+    // async function fetchData() {
+    //   const request = await axiosbaseurl.get("PostsWithPref.php", {
+    // params: {
+    //   userid: userId,
+    
+    //   setData(request.data);
+    //   console.table(request.data);
+    //   return request;
+    // }
+    // fetchData();
 
 
     // setisLoading(true);
