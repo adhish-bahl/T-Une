@@ -54,7 +54,7 @@ function Login(props) {
 
          const xhttp = new XMLHttpRequest();
             xhttp.onload = function() {
-                console.log(this.responseText);
+                // console.log(this.responseText);
                 setSignRes(signRes =  this.responseText);
                 if(signRes === "Success") {
                     setSignInMessageBoxContent("Account created successfully! Please Wait...");
@@ -176,8 +176,8 @@ function Login(props) {
         xhttp.onload = function(e) {
             const incomingData = JSON.parse(this.responseText);
             setLogRes(logRes = incomingData.result);
-            console.log(logRes);
-            console.log(incomingData);
+            // console.log(logRes);
+            // console.log(incomingData);
             if(logRes === "Login Succesful") {
                 setLogInMessageBoxContent("Logged In Sucessfully!");
                 props.authentication(true);

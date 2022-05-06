@@ -16,7 +16,7 @@ function SelectingPreference({email}) {
     var [gen3, setGen3] = useState();
     const history = useHistory();
 
-    console.log(email);
+    // console.log(email);
 
     const handleSubmit = () => {
         if(hh) {
@@ -85,23 +85,23 @@ function SelectingPreference({email}) {
 
     const handleHH = () => {
         setHH(hh = !hh);
-        console.log(hh);
+        // console.log(hh);
         handleSelection();
     }
     const handleEDM = () => {
         setEDM(edm = !edm);
         handleSelection();
-        console.log(edm);
+        // console.log(edm);
     }
     const handleBoll = () => {
         setBoll(boll = !boll);
         handleSelection();
-        console.log(boll);
+        // console.log(boll);
     }
     const handleKpop = () => {
         setKpop(kpop = !kpop);
         handleSelection();
-        console.log(kpop);
+        // console.log(kpop);
     }
 
     return (

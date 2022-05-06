@@ -21,7 +21,7 @@ function Trending() {
         }
         
         for(let i = 0; i < mostTrending.length; i++) {
-            console.log(mostTrending[i]);
+            // console.log(mostTrending[i]);
         }
     }
 

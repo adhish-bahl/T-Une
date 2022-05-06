@@ -18,7 +18,7 @@ function Store({userId}) {
         const incomingData = JSON.parse(this.responseText);
         // setLogRes(logRes = incomingData.result);
         // console.log(logRes);
-        console.table(incomingData);
+        // console.table(incomingData);
         setData(incomingData);
       }
       xhttp.send();

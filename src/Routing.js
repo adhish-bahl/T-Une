@@ -11,6 +11,7 @@ import Trending from './Trending'
 import Team from './Team';
 import SelectingPreference from './SelectingPreference';
 import Quiz from './Quiz';
+import PageNotFound from './PageNotFound';
 // import { UserContext } from "./Interface";
 
 function Routing() {
@@ -114,6 +115,10 @@ function Routing() {
                             })
                         }} */}
                         <Footer />
+                    </Route>
+
+                    <Route >
+                        <PageNotFound />
                     </Route>
 
                 </Switch>

@@ -13,8 +13,8 @@ function ExplorePage({auth, userId}) {
   xhttp.onload = function(e) {
     incomingData = JSON.parse(this.responseText);
     // const incomingData = this.responseText;
-    console.log(typeof(incomingData));
-    console.log(incomingData);
+    // console.log(typeof(incomingData));
+    // console.log(incomingData);
   }
   xhttp.send();
 
