@@ -10,6 +10,7 @@ import ExplorePage from './ExplorePage';
 import Trending from './Trending'
 import Team from './Team';
 import SelectingPreference from './SelectingPreference';
+import Quiz from './Quiz';
 // import { UserContext } from "./Interface";
 
 function Routing() {
@@ -76,6 +77,7 @@ function Routing() {
 
                     <Route exact path="/quiz">
                         <Header user={auth ? name : "Guest"} auth={auth} />
+                        <Quiz />
                         <Footer />
                     </Route>
                     
