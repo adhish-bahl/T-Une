@@ -7,7 +7,7 @@ import store from "./images/store.svg"
 import quiz from "./images/quizlogo.png"
 import trending from "./images/TrendingIcon.svg";
 import "./Header.css";
-import { Link, Redirect } from "react-router-dom";  
+import { Link, Redirect, useHistory } from "react-router-dom";  
 
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -90,7 +90,12 @@ function Header(props) {
 
   const handleLogout = () => {
     // props.authentication(false);
-    window.location.reload();
+    // window.location.reload();
+    props.authentication(false);
+    props.getEmail("");
+    props.getName("");
+    props.getUserId("");
+    console.log(props.auth);
   }
 
   const handleHome = () => {

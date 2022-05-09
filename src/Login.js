@@ -199,11 +199,13 @@ function Login(props) {
                 props.authentication(false);
                 props.getEmail("");
                 props.getName("");
+                props.getUserId("");
             } else {
                 setLogInMessageBoxContent("Oops, something went wrong. Check all details and try again.")
                 props.authentication(false);
                 props.getEmail("");
                 props.getName("");
+                props.getUserId("");
             }
         }
         xhttp.send();

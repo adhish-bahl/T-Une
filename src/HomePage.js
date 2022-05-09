@@ -61,7 +61,7 @@ function HomePage({auth, userId}) {
       const incomingData = JSON.parse(this.responseText);
       // setLogRes(logRes = incomingData.result);
       // console.log(logRes);
-      console.table(incomingData.weblink);
+      // console.table(incomingData.weblink);
       setData(incomingData);
     }
     xhttp.send();

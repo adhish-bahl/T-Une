@@ -53,7 +53,7 @@ function Routing() {
             <div className="App">
                 <Switch>
                     <Route exact path="/ourteam">
-                        <Header  user={auth ? name : "Guest"} auth={auth} authentication={pull_auth}/>
+                        <Header  user={auth ? name : "Guest"} auth={auth} authentication={pull_auth} getEmail={pull_email}  getName={pull_name} getUserId={pull_userId}/>
                         <Team />
                         <Footer />
                     </Route>
@@ -65,31 +65,31 @@ function Routing() {
                     </Route>
 
                     <Route exact  path="/trending">
-                        <Header user={auth ? name : "Guest"} auth={auth} />
+                        <Header user={auth ? name : "Guest"} auth={auth} authentication={pull_auth} getEmail={pull_email}  getName={pull_name} getUserId={pull_userId} />
                         <Trending />
                         <Footer />
                     </Route>
 
                     <Route exact path="/feedback">
-                        <Header user={auth ? name : "Guest"} auth={auth} />
+                        <Header user={auth ? name : "Guest"} auth={auth} authentication={pull_auth} getEmail={pull_email}  getName={pull_name} getUserId={pull_userId} />
                         {auth ?  <FeedbackPage userId={userId} /> : <Redirect to="/login" />}
                         <Footer />
                     </Route>
 
                     <Route exact path="/quiz">
-                        <Header user={auth ? name : "Guest"} auth={auth} />
+                        <Header user={auth ? name : "Guest"} auth={auth} authentication={pull_auth} getEmail={pull_email}  getName={pull_name} getUserId={pull_userId} />
                         <Quiz />
                         <Footer />
                     </Route>
                     
                     <Route exact path="/explore">
-                        <Header user={auth ? name : "Guest"} auth={auth} />
+                        <Header user={auth ? name : "Guest"} auth={auth} authentication={pull_auth} getEmail={pull_email}  getName={pull_name} getUserId={pull_userId} />
                         <ExplorePage auth={auth} userId={userId} />
                         <Footer />
                     </Route>
 
                     <Route exact path="/store">
-                        <Header user={auth ? name : "Guest"} auth={auth} />
+                        <Header user={auth ? name : "Guest"} auth={auth} authentication={pull_auth} getEmail={pull_email}  getName={pull_name} getUserId={pull_userId} />
                         <Store />
                         <Footer />
                     </Route>
@@ -99,7 +99,7 @@ function Routing() {
                     </Route>
 
                     <Route path="/">
-                        <Header user={auth ? name : "Guest"} auth={auth} />
+                        <Header user={auth ? name : "Guest"} auth={auth} authentication={pull_auth} getEmail={pull_email}  getName={pull_name} getUserId={pull_userId} />
 
                         {/* {auth ? <HomePage /> : history.push("/login")} */}
                         {auth ? <HomePage auth={auth} userId={userId} /> : <Redirect to="/login" />}
