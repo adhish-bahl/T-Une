@@ -12,8 +12,13 @@ table {
     width: 50vw;
     background-color: rgba(197, 151, 45, 0.89);
     font-size: 1.4rem;
+    margin: 50px 0px;
 }
 
 table td {
-    padding: 5px 10px;
+    padding-bottom: 50px;
+}
+
+.heading {
+    margin-top: 50px;
 }
